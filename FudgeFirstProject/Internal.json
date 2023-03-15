@@ -1,0 +1,79 @@
+{
+  "MeshCube|2023-03-15T18:38:10.265Z|55629": {
+    "ƒ.MeshCube": {
+      "idResource": "MeshCube|2023-03-15T18:38:10.265Z|55629",
+      "name": "MeshCube",
+      "type": "MeshCube"
+    }
+  },
+  "Graph|2023-03-15T18:38:39.998Z|07738": {
+    "ƒ.Graph": {
+      "name": "NewGraph",
+      "active": true,
+      "components": {
+        "ComponentMesh": [
+          {
+            "ƒ.ComponentMesh": {
+              "idMesh": "MeshCube|2023-03-15T18:38:10.265Z|55629",
+              "pivot": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ],
+        "ComponentTransform": [
+          {
+            "ƒ.ComponentTransform": {
+              "local": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[2, 2, 2]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ],
+        "ComponentMaterial": [
+          {
+            "ƒ.ComponentMaterial": {
+              "sortForAlpha": false,
+              "clrPrimary": "[0.45098039215686275, 0.10980392156862745, 0.10980392156862745, 1]",
+              "clrSecondary": "[1, 1, 1, 1]",
+              "pivot": {
+                "translation": "[0, 0]",
+                "rotation": 0,
+                "scaling": "[1, 1]"
+              },
+              "Component": {
+                "active": true
+              },
+              "idMaterial": "Material|2023-03-15T18:39:38.848Z|07650"
+            }
+          }
+        ]
+      },
+      "children": [],
+      "idResource": "Graph|2023-03-15T18:38:39.998Z|07738",
+      "type": "Graph"
+    }
+  },
+  "Material|2023-03-15T18:39:38.848Z|07650": {
+    "ƒ.Material": {
+      "name": "ShaderLit",
+      "idResource": "Material|2023-03-15T18:39:38.848Z|07650",
+      "shader": "ShaderLit",
+      "coat": {
+        "ƒ.CoatColored": {
+          "color": "[1, 1, 1, 1]"
+        }
+      }
+    }
+  }
+}
