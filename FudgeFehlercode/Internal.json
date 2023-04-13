@@ -1675,7 +1675,7 @@
                 {
                   "ƒ.ComponentTransform": {
                     "local": {
-                      "translation": "[0, 0, 0]",
+                      "translation": "[0, -0.44999998807907104, 1]",
                       "rotation": "[0, 0, 0]",
                       "scaling": "[1, 1, 1]"
                     },
@@ -1684,181 +1684,52 @@
                     }
                   }
                 }
-              ]
-            },
-            "children": [
-              {
-                "ƒ.Node": {
-                  "name": "WomanIdle",
-                  "active": true,
-                  "components": {
-                    "ComponentMesh": [
-                      {
-                        "ƒ.ComponentMesh": {
-                          "idMesh": "MeshQuad|2023-04-05T12:29:04.057Z|16188",
-                          "pivot": {
-                            "translation": "[0, 0.5, 0]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[1, 1, 1]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
-                      }
-                    ],
-                    "ComponentTransform": [
-                      {
-                        "ƒ.ComponentTransform": {
-                          "local": {
-                            "translation": "[0, -0.4200000464916229, 1]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[1, 1, 1]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
-                      }
-                    ],
-                    "ComponentMaterial": [
-                      {
-                        "ƒ.ComponentMaterial": {
-                          "sortForAlpha": false,
-                          "clrPrimary": "[1, 1, 1, 1]",
-                          "clrSecondary": "[1, 1, 1, 1]",
-                          "pivot": {
-                            "translation": "[0.2291666716337204, 0.1875]",
-                            "rotation": 0,
-                            "scaling": "[0.1979166716337204, 0.8333333134651184]"
-                          },
-                          "Component": {
-                            "active": true
-                          },
-                          "idMaterial": "Material|2023-04-12T09:52:00.832Z|74006"
-                        }
-                      }
-                    ],
-                    "ComponentAnimator": [
-                      {
-                        "ƒ.ComponentAnimator": {
-                          "Component": {
-                            "active": true
-                          },
-                          "idAnimation": "AnimationSprite|2023-04-12T09:53:36.252Z|45288",
-                          "playmode": "loop",
-                          "quantization": "discrete",
-                          "scale": 1,
-                          "scaleWithGameTime": true,
-                          "animateInEditor": false
-                        }
-                      }
-                    ]
-                  },
-                  "children": []
-                }
-              },
-              {
-                "ƒ.Node": {
-                  "name": "WomanRun",
-                  "active": false,
-                  "components": {
-                    "ComponentMesh": [
-                      {
-                        "ƒ.ComponentMesh": {
-                          "idMesh": "MeshQuad|2023-04-05T12:29:04.057Z|16188",
-                          "pivot": {
-                            "translation": "[0, 0.5, 0]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[1, 1, 1]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
-                      }
-                    ],
-                    "ComponentTransform": [
-                      {
-                        "ƒ.ComponentTransform": {
-                          "local": {
-                            "translation": "[0, -0.4200000464916229, 1]",
-                            "rotation": "[0, 0, 0]",
-                            "scaling": "[1, 1, 1]"
-                          },
-                          "Component": {
-                            "active": true
-                          }
-                        }
-                      }
-                    ],
-                    "ComponentMaterial": [
-                      {
-                        "ƒ.ComponentMaterial": {
-                          "sortForAlpha": false,
-                          "clrPrimary": "[1, 1, 1, 1]",
-                          "clrSecondary": "[1, 1, 1, 1]",
-                          "pivot": {
-                            "translation": "[0.48750004172325134, 0.2083333283662796]",
-                            "rotation": 0,
-                            "scaling": "[0.1388888955116272, 0.8333333134651184]"
-                          },
-                          "Component": {
-                            "active": true
-                          },
-                          "idMaterial": "Material|2023-03-26T18:01:31.506Z|39927"
-                        }
-                      }
-                    ],
-                    "ComponentAnimator": [
-                      {
-                        "ƒ.ComponentAnimator": {
-                          "Component": {
-                            "active": true
-                          },
-                          "idAnimation": "AnimationSprite|2023-04-06T12:57:06.021Z|23957",
-                          "playmode": "loop",
-                          "quantization": "discrete",
-                          "scale": 1,
-                          "scaleWithGameTime": true,
-                          "animateInEditor": false
-                        }
-                      }
-                    ]
-                  },
-                  "children": []
-                }
-              }
-            ]
-          }
-        },
-        {
-          "ƒ.Node": {
-            "name": "Camera",
-            "active": true,
-            "components": {
-              "ComponentCamera": [
+              ],
+              "ComponentMesh": [
                 {
-                  "ƒ.ComponentCamera": {
-                    "backgroundColor": {
-                      "r": 0,
-                      "g": 0,
-                      "b": 0,
-                      "a": 1
-                    },
-                    "backgroundEnabled": true,
-                    "projection": "central",
-                    "fieldOfView": 45,
-                    "direction": "diagonal",
-                    "aspect": 1,
+                  "ƒ.ComponentMesh": {
+                    "idMesh": "MeshQuad|2023-04-05T12:29:04.057Z|16188",
                     "pivot": {
-                      "translation": "[0, 0, 0]",
+                      "translation": "[0, 0.5, 0]",
                       "rotation": "[0, 0, 0]",
                       "scaling": "[1, 1, 1]"
                     },
                     "Component": {
                       "active": true
                     }
+                  }
+                }
+              ],
+              "ComponentMaterial": [
+                {
+                  "ƒ.ComponentMaterial": {
+                    "sortForAlpha": false,
+                    "clrPrimary": "[1, 1, 1, 1]",
+                    "clrSecondary": "[1, 1, 1, 1]",
+                    "pivot": {
+                      "translation": "[-0.02083333395421505, 0.1875]",
+                      "rotation": 0,
+                      "scaling": "[0.1979166716337204, 0.8333333134651184]"
+                    },
+                    "Component": {
+                      "active": true
+                    },
+                    "idMaterial": "Material|2023-04-12T09:52:00.832Z|74006"
+                  }
+                }
+              ],
+              "ComponentAnimator": [
+                {
+                  "ƒ.ComponentAnimator": {
+                    "Component": {
+                      "active": true
+                    },
+                    "idAnimation": "AnimationSprite|2023-04-12T09:53:36.252Z|45288",
+                    "playmode": "loop",
+                    "quantization": "discrete",
+                    "scale": 1,
+                    "scaleWithGameTime": true,
+                    "animateInEditor": false
                   }
                 }
               ]

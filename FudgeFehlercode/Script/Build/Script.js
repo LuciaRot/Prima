@@ -42,17 +42,21 @@ var Script;
     ƒ.Debug.info("Main Program Template running!");
     let viewport;
     let woman;
-    let womanRun;
-    let womanIdle;
+    let womanAnimation;
+    let womanMaterial;
+    let womanRunMaterial;
+    let womanRunAnimation;
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
         woman = viewport.getBranch().getChildrenByName("Woman")[0];
         ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
-        womanRun = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanRun")[0];
-        womanIdle = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0];
-        woman.addEventListener("click", changeAnimation);
+        womanAnimation = viewport.getBranch().getChildrenByName("Woman")[0].getComponent(ƒ.ComponentAnimator);
+        womanMaterial = viewport.getBranch().getChildrenByName("Woman")[0].getComponent(ƒ.ComponentMaterial);
+        womanRunAnimation = ƒ.Project.getResourcesByName("WomanRun")[0];
+        womanRunMaterial = ƒ.Project.getResourcesByName("WomanRun")[0];
+        changeAnimation();
     }
     function update(_event) {
         // ƒ.Physics.simulate();  // if physics is included and used
@@ -61,8 +65,9 @@ var Script;
         //woman.mtxLocal.translateX(0.01);
     }
     function changeAnimation() {
-        console.log("hello");
-        womanRun.activate;
+        womanAnimation.animation = womanRunAnimation;
+        womanMaterial.material = womanRunMaterial;
+        console.log(womanMaterial);
     }
 })(Script || (Script = {}));
 //# sourceMappingURL=Script.js.map
