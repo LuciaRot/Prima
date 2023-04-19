@@ -198,7 +198,33 @@
     "ƒ.Graph": {
       "name": "Scene",
       "active": true,
-      "components": {},
+      "components": {
+        "ComponentCamera": [
+          {
+            "ƒ.ComponentCamera": {
+              "backgroundColor": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 1
+              },
+              "backgroundEnabled": true,
+              "projection": "central",
+              "fieldOfView": 45,
+              "direction": "diagonal",
+              "aspect": 1,
+              "pivot": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ]
+      },
       "children": [
         {
           "ƒ.Node": {
@@ -1799,7 +1825,7 @@
                           "clrPrimary": "[1, 1, 1, 1]",
                           "clrSecondary": "[1, 1, 1, 1]",
                           "pivot": {
-                            "translation": "[0.48750004172325134, 0.2083333283662796]",
+                            "translation": "[-0.010416666977107525, 0.2083333283662796]",
                             "rotation": 0,
                             "scaling": "[0.1388888955116272, 0.8333333134651184]"
                           },
@@ -1830,40 +1856,6 @@
                 }
               }
             ]
-          }
-        },
-        {
-          "ƒ.Node": {
-            "name": "Camera",
-            "active": true,
-            "components": {
-              "ComponentCamera": [
-                {
-                  "ƒ.ComponentCamera": {
-                    "backgroundColor": {
-                      "r": 0,
-                      "g": 0,
-                      "b": 0,
-                      "a": 1
-                    },
-                    "backgroundEnabled": true,
-                    "projection": "central",
-                    "fieldOfView": 45,
-                    "direction": "diagonal",
-                    "aspect": 1,
-                    "pivot": {
-                      "translation": "[0, 0, 0]",
-                      "rotation": "[0, 0, 0]",
-                      "scaling": "[1, 1, 1]"
-                    },
-                    "Component": {
-                      "active": true
-                    }
-                  }
-                }
-              ]
-            },
-            "children": []
           }
         }
       ],
