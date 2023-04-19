@@ -56,13 +56,7 @@ var Script;
     function start(_event) {
         viewport = _event.detail;
         woman = viewport.getBranch().getChildrenByName("Woman")[0];
-        // womanRun = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanRun")[0];
         womanIdle = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0];
-        // womanRunMaterial = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanRun")[0].getComponent(ƒ.ComponentMaterial);
-        // womanIdleMaterial = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0].getComponent(ƒ.ComponentMaterial);
-        // womanRunTexture = ƒ.Project.getResourcesByName("WomanRun")[0] as ƒ.Material;
-        // womanAnimation = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0].getComponent(ƒ.ComponentAnimator);
-        // womanRunAnimation = ƒ.Project.getResourcesByName("WomanRun")[0] as ƒ.AnimationSprite;
         ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
     }
@@ -100,7 +94,7 @@ var Script;
         }
     }
     function changeAnimation(_status) {
-        // let womanAnimation: ƒ.ComponentAnimator = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName(_status)[0].getComponent(ƒ.ComponentAnimator);
+        // let womanAnimation: ƒ.ComponentAnimator = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0].getComponent(ƒ.ComponentAnimator);
         // let womanSprite: ƒ.AnimationSprite = ƒ.Project.getResourcesByName(_status)[0] as ƒ.AnimationSprite;
         let womanMaterial = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0].getComponent(ƒ.ComponentMaterial);
         let womanTexture = ƒ.Project.getResourcesByName(_status)[0];

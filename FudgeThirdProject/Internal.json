@@ -223,6 +223,13 @@
               }
             }
           }
+        ],
+        "ComponentAudioListener": [
+          {
+            "ƒ.ComponentAudioListener": {
+              "active": true
+            }
+          }
         ]
       },
       "children": [

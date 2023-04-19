@@ -4,16 +4,13 @@ namespace Script {
 
   let viewport: ƒ.Viewport;
   let woman: ƒ.Node; 
-  let womanRun: ƒ.Node;
   let womanIdle: ƒ.Node;
-  // let womanIdleMaterial: ƒ.ComponentMaterial;
-  // let womanRunMaterial: ƒ.ComponentMaterial;
   let ySpeed: number = 0;
   let isGrounded: boolean = true;
   let materialRotation: number;
-  // let womanRunTexture: ƒ.Material;
-  // let womanAnimation: ƒ.ComponentAnimator;
-  // let womanRunAnimation: ƒ.AnimationSprite;
+  const gravity: number = -9.81;
+  
+ 
 
 
   document.addEventListener("interactiveViewportStarted", <EventListener>start);
@@ -23,13 +20,15 @@ namespace Script {
   function start(_event: CustomEvent): void {
     viewport = _event.detail;
     woman = viewport.getBranch().getChildrenByName("Woman")[0];
-    // womanRun = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanRun")[0];
     womanIdle = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0];
-    // womanRunMaterial = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanRun")[0].getComponent(ƒ.ComponentMaterial);
-    // womanIdleMaterial = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0].getComponent(ƒ.ComponentMaterial);
-    // womanRunTexture = ƒ.Project.getResourcesByName("WomanRun")[0] as ƒ.Material;
-    // womanAnimation = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0].getComponent(ƒ.ComponentAnimator);
-    // womanRunAnimation = ƒ.Project.getResourcesByName("WomanRun")[0] as ƒ.AnimationSprite;
+    let graph: ƒ.Graph = <ƒ.Graph>viewport.getBranch();
+
+    ƒ.AudioManager.default.listenWith(graph.getComponent(ƒ.ComponentAudioListener));
+    ƒ.AudioManager.default.listenTo(graph);
+
+    let cmpCamera: ƒ.ComponentCamera = graph.getComponent(ƒ.ComponentCamera);
+    viewport.camera = cmpCamera;
+
     ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
     ƒ.Loop.start();  // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
     
@@ -40,7 +39,7 @@ namespace Script {
     // ƒ.Physics.simulate();  // if physics is included and used
     viewport.draw();
     ƒ.AudioManager.default.update();
-    //woman.mtxLocal.translateX(0.01);
+    followCamera();
     movement();
   }
 
@@ -68,10 +67,23 @@ namespace Script {
     if(isGrounded = true && ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SPACE])){
       ySpeed = 3;
       isGrounded = false;
-    }}
+    }
+
+    ySpeed += gravity * timeFrame;
+    let pos: ƒ.Vector3 = womanIdle.mtxLocal.translation;
+    pos.y += ySpeed * timeFrame;
+
+    let tileCollided: ƒ.Node = checkCollision(pos);
+    if (tileCollided) {
+      ySpeed = 0;
+      pos.y = tileCollided.mtxWorld.translation.y + 0.5;
+      isGrounded = true;
+    }
+    womanIdle.mtxLocal.translation = pos;
+  }
   
   function changeAnimation(_status: string): void {
-    // let womanAnimation: ƒ.ComponentAnimator = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName(_status)[0].getComponent(ƒ.ComponentAnimator);
+    // let womanAnimation: ƒ.ComponentAnimator = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0].getComponent(ƒ.ComponentAnimator);
     // let womanSprite: ƒ.AnimationSprite = ƒ.Project.getResourcesByName(_status)[0] as ƒ.AnimationSprite;
     let womanMaterial: ƒ.ComponentMaterial = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0].getComponent(ƒ.ComponentMaterial);
     let womanTexture: ƒ.Material = ƒ.Project.getResourcesByName(_status)[0] as ƒ.Material;
@@ -80,6 +92,21 @@ namespace Script {
     womanMaterial.material = womanTexture;
     
    
+  }
+
+  function checkCollision(_posWorld: ƒ.Vector3): ƒ.Node {
+    let tiles: ƒ.Node[] = viewport.getBranch().getChildrenByName("Platforms")[0].getChildren()
+    for (let tile of tiles) {
+      let pos: ƒ.Vector3 = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
+      if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5)
+        return tile;
+  }}
+
+  function followCamera(): void{
+    let mutator: ƒ.Mutator = womanIdle.mtxLocal.getMutator();
+    viewport.camera.mtxPivot.mutate(
+      { "translation": { "x": mutator.translation.x, "y": mutator.translation.y } }
+    );
   }
 
  }
