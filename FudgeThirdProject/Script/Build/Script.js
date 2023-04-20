@@ -42,21 +42,22 @@ var Script;
     ƒ.Debug.info("Main Program Template running!");
     let viewport;
     let woman;
-    let womanRun;
     let womanIdle;
-    // let womanIdleMaterial: ƒ.ComponentMaterial;
-    // let womanRunMaterial: ƒ.ComponentMaterial;
     let ySpeed = 0;
     let isGrounded = true;
     let materialRotation;
-    // let womanRunTexture: ƒ.Material;
-    // let womanAnimation: ƒ.ComponentAnimator;
-    // let womanRunAnimation: ƒ.AnimationSprite;
+    const gravity = -9.81;
+    let cmpCamera;
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
         woman = viewport.getBranch().getChildrenByName("Woman")[0];
         womanIdle = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0];
+        let graph = viewport.getBranch();
+        ƒ.AudioManager.default.listenWith(graph.getComponent(ƒ.ComponentAudioListener));
+        ƒ.AudioManager.default.listenTo(graph);
+        cmpCamera = graph.getComponent(ƒ.ComponentCamera);
+        viewport.camera = cmpCamera;
         ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
     }
@@ -64,7 +65,7 @@ var Script;
         // ƒ.Physics.simulate();  // if physics is included and used
         viewport.draw();
         ƒ.AudioManager.default.update();
-        //woman.mtxLocal.translateX(0.01);
+        followCamera();
         movement();
     }
     function movement() {
@@ -92,6 +93,16 @@ var Script;
             ySpeed = 3;
             isGrounded = false;
         }
+        ySpeed += gravity * timeFrame;
+        let pos = womanIdle.mtxLocal.translation;
+        pos.y += ySpeed * timeFrame;
+        let tileCollided = checkCollision(pos);
+        if (tileCollided) {
+            ySpeed = 0;
+            pos.y = tileCollided.mtxWorld.translation.y + 0.5;
+            isGrounded = true;
+        }
+        womanIdle.mtxLocal.translation = pos;
     }
     function changeAnimation(_status) {
         // let womanAnimation: ƒ.ComponentAnimator = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0].getComponent(ƒ.ComponentAnimator);
@@ -100,6 +111,19 @@ var Script;
         let womanTexture = ƒ.Project.getResourcesByName(_status)[0];
         // womanAnimation.animation = womanSprite;
         womanMaterial.material = womanTexture;
+    }
+    function checkCollision(_posWorld) {
+        let tiles = viewport.getBranch().getChildrenByName("Platforms")[0].getChildrenByName("Platform_2")[0].getChildrenByName("Grass");
+        console.log(tiles);
+        for (let tile of tiles) {
+            let pos = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
+            if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5)
+                return tile;
+        }
+    }
+    function followCamera() {
+        let mutator = womanIdle.mtxLocal.getMutator();
+        viewport.camera.mtxPivot.mutate({ "translation": { "x": mutator.translation.x, "y": mutator.translation.y } });
     }
 })(Script || (Script = {}));
 //# sourceMappingURL=Script.js.map

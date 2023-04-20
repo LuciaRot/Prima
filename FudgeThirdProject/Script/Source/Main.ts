@@ -9,6 +9,7 @@ namespace Script {
   let isGrounded: boolean = true;
   let materialRotation: number;
   const gravity: number = -9.81;
+  let cmpCamera: ƒ.ComponentCamera;
   
  
 
@@ -26,7 +27,7 @@ namespace Script {
     ƒ.AudioManager.default.listenWith(graph.getComponent(ƒ.ComponentAudioListener));
     ƒ.AudioManager.default.listenTo(graph);
 
-    let cmpCamera: ƒ.ComponentCamera = graph.getComponent(ƒ.ComponentCamera);
+    cmpCamera = graph.getComponent(ƒ.ComponentCamera);
     viewport.camera = cmpCamera;
 
     ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
@@ -95,7 +96,8 @@ namespace Script {
   }
 
   function checkCollision(_posWorld: ƒ.Vector3): ƒ.Node {
-    let tiles: ƒ.Node[] = viewport.getBranch().getChildrenByName("Platforms")[0].getChildren()
+    let tiles: ƒ.Node[] = viewport.getBranch().getChildrenByName("Platforms")[0].getChildrenByName("Platform_2")[0].getChildrenByName("Grass");
+    console.log(tiles);
     for (let tile of tiles) {
       let pos: ƒ.Vector3 = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
       if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5)

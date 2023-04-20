@@ -194,6 +194,14 @@
       }
     }
   },
+  "Audio|2023-04-19T19:28:43.818Z|05083": {
+    "ƒ.Audio": {
+      "url": "Sounds\\Sounds\\music.mp3",
+      "idResource": "Audio|2023-04-19T19:28:43.818Z|05083",
+      "name": "Sounds\\Sounds\\music.mp3",
+      "type": "Audio"
+    }
+  },
   "Graph|2023-03-22T22:39:30.989Z|08629": {
     "ƒ.Graph": {
       "name": "Scene",
@@ -214,8 +222,8 @@
               "direction": "diagonal",
               "aspect": 1,
               "pivot": {
-                "translation": "[0, 0, 0]",
-                "rotation": "[0, 0, 0]",
+                "translation": "[0, 7, 5]",
+                "rotation": "[0, 180, 0]",
                 "scaling": "[1, 1, 1]"
               },
               "Component": {
@@ -228,6 +236,17 @@
           {
             "ƒ.ComponentAudioListener": {
               "active": true
+            }
+          }
+        ],
+        "ComponentAudio": [
+          {
+            "ƒ.ComponentAudio": {
+              "active": true,
+              "idResource": "Audio|2023-04-19T19:28:43.818Z|05083",
+              "playing": false,
+              "loop": false,
+              "volume": 8
             }
           }
         ]
