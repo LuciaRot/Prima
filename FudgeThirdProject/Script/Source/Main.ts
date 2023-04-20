@@ -65,7 +65,7 @@ namespace Script {
       changeAnimation("WomanIdle");
     }
 
-    if(isGrounded = true && ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SPACE])){
+    if(isGrounded == true && ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SPACE])){
       ySpeed = 3;
       isGrounded = false;
     }
