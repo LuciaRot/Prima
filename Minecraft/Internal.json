@@ -1,0 +1,151 @@
+{
+  "MeshCube|2023-04-20T13:05:36.545Z|63439": {
+    "ƒ.MeshCube": {
+      "idResource": "MeshCube|2023-04-20T13:05:36.545Z|63439",
+      "name": "MeshCube",
+      "type": "MeshCube"
+    }
+  },
+  "Material|2023-04-20T13:14:35.307Z|33635": {
+    "ƒ.Material": {
+      "name": "ShaderFlat",
+      "idResource": "Material|2023-04-20T13:14:35.307Z|33635",
+      "shader": "ShaderFlat",
+      "coat": {
+        "ƒ.CoatRemissive": {
+          "color": "[1, 1, 1, 1]",
+          "diffuse": 1,
+          "specular": 0
+        }
+      }
+    }
+  },
+  "Graph|2023-04-20T13:05:22.308Z|67040": {
+    "ƒ.Graph": {
+      "name": "GameGraph",
+      "active": true,
+      "components": {
+        "ComponentMesh": [],
+        "ComponentMaterial": [
+          {
+            "ƒ.ComponentMaterial": {
+              "sortForAlpha": false,
+              "clrPrimary": "[1, 0, 0, 1]",
+              "clrSecondary": "[1, 1, 1, 1]",
+              "pivot": {
+                "translation": "[0, 0]",
+                "rotation": 0,
+                "scaling": "[1, 1]"
+              },
+              "Component": {
+                "active": true
+              },
+              "idMaterial": "Material|2023-04-20T13:14:35.307Z|33635"
+            }
+          }
+        ],
+        "ComponentLight": [
+          {
+            "ƒ.ComponentLight": {
+              "pivot": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[37, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "light": {
+                "ƒ.LightDirectional": {
+                  "color": "[1, 1, 1, 1]"
+                }
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ]
+      },
+      "children": [
+        {
+          "ƒ.GraphInstance": {
+            "deserializeFromSource": true,
+            "name": "LightGraph",
+            "idSource": "Graph|2023-04-20T13:20:07.844Z|12057"
+          }
+        }
+      ],
+      "idResource": "Graph|2023-04-20T13:05:22.308Z|67040",
+      "type": "Graph"
+    }
+  },
+  "Material|2023-04-20T13:16:41.883Z|44941": {
+    "ƒ.Material": {
+      "name": "ShaderFlatTextured",
+      "idResource": "Material|2023-04-20T13:16:41.883Z|44941",
+      "shader": "ShaderFlatTextured",
+      "coat": {
+        "ƒ.CoatRemissiveTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-04-20T13:16:46.723Z|86159",
+          "diffuse": 1,
+          "specular": 0
+        }
+      }
+    }
+  },
+  "TextureImage|2023-04-20T13:16:46.723Z|86159": {
+    "ƒ.TextureImage": {
+      "url": "Dirt.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-04-20T13:16:46.723Z|86159",
+        "name": "Dirt.png",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "Graph|2023-04-20T13:20:07.844Z|12057": {
+    "ƒ.Graph": {
+      "name": "LightGraph",
+      "active": true,
+      "components": {
+        "ComponentLight": [],
+        "ComponentMesh": [
+          {
+            "ƒ.ComponentMesh": {
+              "idMesh": "MeshCube|2023-04-20T13:05:36.545Z|63439",
+              "pivot": {
+                "translation": "[0, 0, 0]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "Component": {
+                "active": true
+              }
+            }
+          }
+        ],
+        "ComponentMaterial": [
+          {
+            "ƒ.ComponentMaterial": {
+              "sortForAlpha": false,
+              "clrPrimary": "[1, 0, 0, 1]",
+              "clrSecondary": "[1, 1, 1, 1]",
+              "pivot": {
+                "translation": "[0, 0]",
+                "rotation": 0,
+                "scaling": "[1, 1]"
+              },
+              "Component": {
+                "active": true
+              },
+              "idMaterial": "Material|2023-04-20T13:14:35.307Z|33635"
+            }
+          }
+        ]
+      },
+      "children": [],
+      "idResource": "Graph|2023-04-20T13:20:07.844Z|12057",
+      "type": "Graph"
+    }
+  }
+}

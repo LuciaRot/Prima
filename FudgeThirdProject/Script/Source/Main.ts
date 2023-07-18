@@ -50,7 +50,7 @@ namespace Script {
     if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D])){
       // woman.mtxLocal.rotation = ƒ.Vector3.Y(0);
       woman.mtxLocal.translateX(2 * timeFrame);
-      changeAnimation("WomanRun");
+      changeAnimation("ASWomanRun", "MWomanRun");
       
     } else if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_LEFT, ƒ.KEYBOARD_CODE.A])){
       // woman.mtxLocal.rotation = ƒ.Vector3.Y(180);
@@ -60,9 +60,9 @@ namespace Script {
       // console.log(materialRotation);
       materialRotation = materialRotation * -1;
       // console.log(materialRotation);
-      changeAnimation("WomanRun");
+      changeAnimation("ASWomanRun", "MWomanRun");
     } else{
-      changeAnimation("WomanIdle");
+      changeAnimation("ASWomanIdle", "MWomanIdle");
     }
 
     if(isGrounded == true && ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SPACE])){
@@ -83,13 +83,14 @@ namespace Script {
     womanIdle.mtxLocal.translation = pos;
   }
   
-  function changeAnimation(_status: string): void {
-    // let womanAnimation: ƒ.ComponentAnimator = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0].getComponent(ƒ.ComponentAnimator);
-    // let womanSprite: ƒ.AnimationSprite = ƒ.Project.getResourcesByName(_status)[0] as ƒ.AnimationSprite;
-    let womanMaterial: ƒ.ComponentMaterial = viewport.getBranch().getChildrenByName("Woman")[0].getChildrenByName("WomanIdle")[0].getComponent(ƒ.ComponentMaterial);
-    let womanTexture: ƒ.Material = ƒ.Project.getResourcesByName(_status)[0] as ƒ.Material;
-
-    // womanAnimation.animation = womanSprite;
+  function changeAnimation(_status: string, _material: string): void {
+    let womanAnimation: ƒ.ComponentAnimator = woman.getChildrenByName("WomanIdle")[0].getComponent(ƒ.ComponentAnimator);
+    let womanSprite: ƒ.AnimationSprite = ƒ.Project.getResourcesByName(_status)[0] as ƒ.AnimationSprite;
+    let womanMaterial: ƒ.ComponentMaterial = woman.getChildrenByName("WomanIdle")[0].getComponent(ƒ.ComponentMaterial);
+    let womanTexture: ƒ.Material = ƒ.Project.getResourcesByName(_material)[0] as ƒ.Material;
+    // console.log(womanAnimation);
+    // console.log(womanSprite);
+    womanAnimation.animation = womanSprite;
     womanMaterial.material = womanTexture;
     
    
@@ -97,7 +98,7 @@ namespace Script {
 
   function checkCollision(_posWorld: ƒ.Vector3): ƒ.Node {
     let tiles: ƒ.Node[] = viewport.getBranch().getChildrenByName("Platforms")[0].getChildrenByName("Platform_2")[0].getChildrenByName("Grass");
-    console.log(tiles);
+    //console.log(tiles);
     for (let tile of tiles) {
       let pos: ƒ.Vector3 = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
       if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5)

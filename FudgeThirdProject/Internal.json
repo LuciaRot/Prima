@@ -102,7 +102,7 @@
   },
   "Material|2023-03-26T18:01:31.506Z|39927": {
     "ƒ.Material": {
-      "name": "WomanRun",
+      "name": "MWomanRun",
       "idResource": "Material|2023-03-26T18:01:31.506Z|39927",
       "shader": "ShaderLitTextured",
       "coat": {
@@ -142,7 +142,7 @@
       "wrap": "[0, 80]",
       "Animation": {
         "idResource": "AnimationSprite|2023-04-06T12:57:06.021Z|23957",
-        "name": "WomanRun",
+        "name": "ASWomanRun",
         "labels": {},
         "events": {},
         "framesPerSecond": 10,
@@ -152,7 +152,7 @@
   },
   "Material|2023-04-12T09:52:00.832Z|74006": {
     "ƒ.Material": {
-      "name": "WomanIdle",
+      "name": "MWomanIdle",
       "idResource": "Material|2023-04-12T09:52:00.832Z|74006",
       "shader": "ShaderLitTextured",
       "coat": {
@@ -186,7 +186,7 @@
       "wrap": "[0, 80]",
       "Animation": {
         "idResource": "AnimationSprite|2023-04-12T09:53:36.252Z|45288",
-        "name": "WomanIdle",
+        "name": "ASWomanIdle",
         "labels": {},
         "events": {},
         "framesPerSecond": 5,
