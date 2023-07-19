@@ -94,9 +94,16 @@ var Script;
         }
         player.mtxLocal.translation = pos;
         let shelfCollided = CollisionShelf(pos);
-        if (shelfCollided) {
+        if (shelfCollided && pos.y >= shelfCollided.mtxWorld.translation.y) {
             ySpeed = 0;
             pos.y = shelfCollided.mtxWorld.translation.y + 0.48;
+            isGrounded = true;
+        }
+        player.mtxLocal.translation = pos;
+        let upperShelfCollided = CollisionUpperShelf(pos);
+        if (upperShelfCollided && pos.y >= upperShelfCollided.mtxWorld.translation.y) {
+            ySpeed = 0;
+            pos.y = upperShelfCollided.mtxWorld.translation.y + 0.18;
             isGrounded = true;
         }
         player.mtxLocal.translation = pos;
@@ -121,6 +128,15 @@ var Script;
     }
     function CollisionShelf(_posWorld) {
         let tiles = viewport.getBranch().getChildrenByName("shelves")[0].getChildrenByName("bottomShelves")[0].getChildrenByName("shelf");
+        //console.log(tiles);
+        for (let tile of tiles) {
+            let pos = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
+            if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5)
+                return tile;
+        }
+    }
+    function CollisionUpperShelf(_posWorld) {
+        let tiles = viewport.getBranch().getChildrenByName("shelves")[0].getChildrenByName("upperShelves")[0].getChildrenByName("shelf");
         //console.log(tiles);
         for (let tile of tiles) {
             let pos = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);

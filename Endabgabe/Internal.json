@@ -431,7 +431,7 @@
                             {
                               "ƒ.ComponentTransform": {
                                 "local": {
-                                  "translation": "[2, -1.0000001192092896, 1]",
+                                  "translation": "[1.499999761581421, -1.0000001192092896, 1]",
                                   "rotation": "[0, 0, 0]",
                                   "scaling": "[2, 1, 1]"
                                 },
@@ -710,7 +710,7 @@
               },
               {
                 "ƒ.Node": {
-                  "name": "upperShelvesSmall",
+                  "name": "upperShelves",
                   "active": true,
                   "components": {},
                   "children": [
@@ -724,7 +724,7 @@
                               "ƒ.ComponentMesh": {
                                 "idMesh": "MeshQuad|2023-07-18T12:59:26.206Z|49213",
                                 "pivot": {
-                                  "translation": "[0, 0, 0]",
+                                  "translation": "[0, -0.4000000059604645, 0]",
                                   "rotation": "[0, 0, 0]",
                                   "scaling": "[1, 1, 1]"
                                 },
@@ -738,9 +738,9 @@
                             {
                               "ƒ.ComponentTransform": {
                                 "local": {
-                                  "translation": "[-2, 0.6999999284744263, 1]",
+                                  "translation": "[-1.5999996662139893, 0.30000001192092896, 1]",
                                   "rotation": "[0, 0, 0]",
-                                  "scaling": "[3, 0.3999999761581421, 1]"
+                                  "scaling": "[3, 2.000000476837158, 1]"
                                 },
                                 "Component": {
                                   "active": true
@@ -794,7 +794,7 @@
                             {
                               "ƒ.ComponentTransform": {
                                 "local": {
-                                  "translation": "[2, 2.499999523162842, 1]",
+                                  "translation": "[2.6999995708465576, 1.0999993085861206, 1]",
                                   "rotation": "[0, 0, 0]",
                                   "scaling": "[3, 0.3999999761581421, 1]"
                                 },
