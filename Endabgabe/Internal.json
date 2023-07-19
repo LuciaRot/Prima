@@ -645,74 +645,13 @@
               },
               {
                 "ƒ.Node": {
-                  "name": "bottomShelvesBig",
-                  "active": true,
-                  "components": {},
-                  "children": [
-                    {
-                      "ƒ.Node": {
-                        "name": "shelf",
-                        "active": true,
-                        "components": {
-                          "ComponentMesh": [
-                            {
-                              "ƒ.ComponentMesh": {
-                                "idMesh": "MeshQuad|2023-07-18T12:59:26.206Z|49213",
-                                "pivot": {
-                                  "translation": "[0, 0, 0]",
-                                  "rotation": "[0, 0, 0]",
-                                  "scaling": "[1, 1, 1]"
-                                },
-                                "Component": {
-                                  "active": true
-                                }
-                              }
-                            }
-                          ],
-                          "ComponentTransform": [
-                            {
-                              "ƒ.ComponentTransform": {
-                                "local": {
-                                  "translation": "[9.69999885559082, -1.0000001192092896, 1]",
-                                  "rotation": "[0, 0, 0]",
-                                  "scaling": "[2, 2, 1]"
-                                },
-                                "Component": {
-                                  "active": true
-                                }
-                              }
-                            }
-                          ],
-                          "ComponentMaterial": [
-                            {
-                              "ƒ.ComponentMaterial": {
-                                "sortForAlpha": false,
-                                "clrPrimary": "[1, 1, 1, 1]",
-                                "clrSecondary": "[1, 1, 1, 1]",
-                                "pivot": {
-                                  "translation": "[0, 0]",
-                                  "rotation": 0,
-                                  "scaling": "[1, 1]"
-                                },
-                                "Component": {
-                                  "active": true
-                                },
-                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
-                              }
-                            }
-                          ]
-                        },
-                        "children": []
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "ƒ.Node": {
                   "name": "upperShelves",
                   "active": true,
-                  "components": {},
+                  "components": {
+                    "ComponentMesh": [],
+                    "ComponentTransform": [],
+                    "ComponentMaterial": []
+                  },
                   "children": [
                     {
                       "ƒ.Node": {
@@ -738,7 +677,7 @@
                             {
                               "ƒ.ComponentTransform": {
                                 "local": {
-                                  "translation": "[-1.5999996662139893, 0.30000001192092896, 1]",
+                                  "translation": "[7.40000057220459, 0.30000001192092896, 1]",
                                   "rotation": "[0, 0, 0]",
                                   "scaling": "[3, 2.000000476837158, 1]"
                                 },
@@ -794,9 +733,130 @@
                             {
                               "ƒ.ComponentTransform": {
                                 "local": {
-                                  "translation": "[2.6999995708465576, 1.0999993085861206, 1]",
+                                  "translation": "[2.6999998092651367, 1.0999993085861206, 1]",
                                   "rotation": "[0, 0, 0]",
                                   "scaling": "[3, 0.3999999761581421, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentMaterial": [
+                            {
+                              "ƒ.ComponentMaterial": {
+                                "sortForAlpha": false,
+                                "clrPrimary": "[1, 1, 1, 1]",
+                                "clrSecondary": "[1, 1, 1, 1]",
+                                "pivot": {
+                                  "translation": "[0, 0]",
+                                  "rotation": 0,
+                                  "scaling": "[1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                },
+                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                              }
+                            }
+                          ]
+                        },
+                        "children": []
+                      }
+                    },
+                    {
+                      "ƒ.Node": {
+                        "name": "shelf",
+                        "active": true,
+                        "components": {
+                          "ComponentMesh": [
+                            {
+                              "ƒ.ComponentMesh": {
+                                "idMesh": "MeshQuad|2023-07-18T12:59:26.206Z|49213",
+                                "pivot": {
+                                  "translation": "[0, -0.4000000059604645, 0]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[1, 1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentTransform": [
+                            {
+                              "ƒ.ComponentTransform": {
+                                "local": {
+                                  "translation": "[9.40000057220459, 0.30000001192092896, 1]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[3, 2.000000476837158, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentMaterial": [
+                            {
+                              "ƒ.ComponentMaterial": {
+                                "sortForAlpha": false,
+                                "clrPrimary": "[1, 1, 1, 1]",
+                                "clrSecondary": "[1, 1, 1, 1]",
+                                "pivot": {
+                                  "translation": "[0, 0]",
+                                  "rotation": 0,
+                                  "scaling": "[1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                },
+                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                              }
+                            }
+                          ]
+                        },
+                        "children": []
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "ƒ.Node": {
+                  "name": "bottomBigShelves",
+                  "active": true,
+                  "components": {},
+                  "children": [
+                    {
+                      "ƒ.Node": {
+                        "name": "shelf",
+                        "active": true,
+                        "components": {
+                          "ComponentMesh": [
+                            {
+                              "ƒ.ComponentMesh": {
+                                "idMesh": "MeshQuad|2023-07-18T12:59:26.206Z|49213",
+                                "pivot": {
+                                  "translation": "[0, 0, 0]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[1, 1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentTransform": [
+                            {
+                              "ƒ.ComponentTransform": {
+                                "local": {
+                                  "translation": "[-0.7000000476837158, -0.5000000596046448, 1]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[1, 2, 1]"
                                 },
                                 "Component": {
                                   "active": true
