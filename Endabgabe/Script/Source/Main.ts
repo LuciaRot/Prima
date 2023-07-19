@@ -61,10 +61,18 @@ namespace Script {
     let pos: ƒ.Vector3 = player.mtxLocal.translation;
     pos.y += ySpeed * timeFrame;
 
-    let tileCollided: ƒ.Node = checkCollision(pos);
+    let tileCollided: ƒ.Node = CollisionFloor(pos);
     if (tileCollided) {
       ySpeed = 0;
-      pos.y = tileCollided.mtxWorld.translation.y + 0.5;
+      pos.y = tileCollided.mtxWorld.translation.y + 0.48;
+      isGrounded = true;
+    }
+    player.mtxLocal.translation = pos;
+
+    let shelfCollided: ƒ.Node = CollisionShelf(pos);
+    if (shelfCollided) {
+      ySpeed = 0;
+      pos.y = shelfCollided.mtxWorld.translation.y + 0.48;
       isGrounded = true;
     }
     player.mtxLocal.translation = pos;
@@ -83,15 +91,24 @@ namespace Script {
    
   }
 
-  function checkCollision(_posWorld: ƒ.Vector3): ƒ.Node {
-    let tiles: ƒ.Node[] = viewport.getBranch().getChildrenByName("floor")[0];
+  function CollisionFloor(_posWorld: ƒ.Vector3): ƒ.Node {
+    let tile: ƒ.Node = viewport.getBranch().getChildrenByName("floor")[0];
+    //console.log(tiles);
+    
+      let pos: ƒ.Vector3 = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
+      if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5){
+        return tile;
+    }
+  }
+
+  function CollisionShelf(_posWorld: ƒ.Vector3): ƒ.Node {
+    let tiles: ƒ.Node[] = viewport.getBranch().getChildrenByName("shelves")[0].getChildrenByName("bottomShelves")[0].getChildrenByName("shelf");
     //console.log(tiles);
     for (let tile of tiles) {
       let pos: ƒ.Vector3 = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
       if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5)
         return tile;
-    }
-  }
+  }}
 
     function followCamera(): void{
       let mutator: ƒ.Mutator = player.mtxLocal.getMutator();

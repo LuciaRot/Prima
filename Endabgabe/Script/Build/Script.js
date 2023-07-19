@@ -86,10 +86,17 @@ var Script;
         ySpeed += gravity * timeFrame;
         let pos = player.mtxLocal.translation;
         pos.y += ySpeed * timeFrame;
-        let tileCollided = checkCollision(pos);
+        let tileCollided = CollisionFloor(pos);
         if (tileCollided) {
             ySpeed = 0;
-            pos.y = tileCollided.mtxWorld.translation.y + 0.5;
+            pos.y = tileCollided.mtxWorld.translation.y + 0.48;
+            isGrounded = true;
+        }
+        player.mtxLocal.translation = pos;
+        let shelfCollided = CollisionShelf(pos);
+        if (shelfCollided) {
+            ySpeed = 0;
+            pos.y = shelfCollided.mtxWorld.translation.y + 0.48;
             isGrounded = true;
         }
         player.mtxLocal.translation = pos;
@@ -104,8 +111,16 @@ var Script;
         playerCompAnimator.animation = playerSprite;
         playerCompMaterial.material = playerTexture;
     }
-    function checkCollision(_posWorld) {
-        let tiles = viewport.getBranch().getChildrenByName("floor")[0];
+    function CollisionFloor(_posWorld) {
+        let tile = viewport.getBranch().getChildrenByName("floor")[0];
+        //console.log(tiles);
+        let pos = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
+        if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5) {
+            return tile;
+        }
+    }
+    function CollisionShelf(_posWorld) {
+        let tiles = viewport.getBranch().getChildrenByName("shelves")[0].getChildrenByName("bottomShelves")[0].getChildrenByName("shelf");
         //console.log(tiles);
         for (let tile of tiles) {
             let pos = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
