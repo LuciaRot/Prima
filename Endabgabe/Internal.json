@@ -518,7 +518,7 @@
                   "children": [
                     {
                       "ƒ.Node": {
-                        "name": "shelf1",
+                        "name": "shelf",
                         "active": true,
                         "components": {
                           "ComponentMesh": [
@@ -541,6 +541,62 @@
                               "ƒ.ComponentTransform": {
                                 "local": {
                                   "translation": "[-5, 3, 1]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[1, 9, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentMaterial": [
+                            {
+                              "ƒ.ComponentMaterial": {
+                                "sortForAlpha": false,
+                                "clrPrimary": "[1, 1, 1, 1]",
+                                "clrSecondary": "[1, 1, 1, 1]",
+                                "pivot": {
+                                  "translation": "[0, 0]",
+                                  "rotation": 0,
+                                  "scaling": "[1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                },
+                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                              }
+                            }
+                          ]
+                        },
+                        "children": []
+                      }
+                    },
+                    {
+                      "ƒ.Node": {
+                        "name": "shelf",
+                        "active": true,
+                        "components": {
+                          "ComponentMesh": [
+                            {
+                              "ƒ.ComponentMesh": {
+                                "idMesh": "MeshQuad|2023-07-18T12:59:26.206Z|49213",
+                                "pivot": {
+                                  "translation": "[0, 0, 0]",
+                                  "rotation": "[0, 0, 0]",
+                                  "scaling": "[1, 1, 1]"
+                                },
+                                "Component": {
+                                  "active": true
+                                }
+                              }
+                            }
+                          ],
+                          "ComponentTransform": [
+                            {
+                              "ƒ.ComponentTransform": {
+                                "local": {
+                                  "translation": "[19.500001907348633, 3, 1]",
                                   "rotation": "[0, 0, 0]",
                                   "scaling": "[1, 9, 1]"
                                 },

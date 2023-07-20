@@ -91,6 +91,7 @@ var Script;
     let imgApple;
     let imgBanana;
     let imgMilk;
+    let sideShelves;
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
@@ -104,7 +105,6 @@ var Script;
         imgBanana = document.getElementById("banana");
         imgMilk = document.getElementById("milk");
         createCollectables();
-        //console.log(player);
         ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
         /* console.log(collectables); */
@@ -121,12 +121,19 @@ var Script;
     function movement() {
         let timeFrame = ƒ.Loop.timeFrameGame / 1000;
         // ƒ.Physics.simulate();  // if physics is included and used
-        if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D])) {
+        //--checking for keyboard input--
+        if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D]) && player.mtxLocal.translation.x < 18.4) {
             player.mtxLocal.translateX(2 * timeFrame);
             changeAnimation("ASCharacterRunRight", "MCharacterRunRight");
         }
-        else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_LEFT, ƒ.KEYBOARD_CODE.A])) {
+        else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D])) {
+            changeAnimation("ASCharacterRunRight", "MCharacterRunRight");
+        }
+        else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_LEFT, ƒ.KEYBOARD_CODE.A]) && player.mtxLocal.translation.x > -4.3) {
             player.mtxLocal.translateX(-2 * timeFrame);
+            changeAnimation("ASCharacterRunLeft", "MCharacterRunLeft");
+        }
+        else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_LEFT, ƒ.KEYBOARD_CODE.A])) {
             changeAnimation("ASCharacterRunLeft", "MCharacterRunLeft");
         }
         else {

@@ -14,6 +14,8 @@ namespace Script {
   let imgApple: HTMLElement;
   let imgBanana: HTMLElement;
   let imgMilk: HTMLElement;
+  let sideShelves: ƒ.Node[];
+  
 
   document.addEventListener("interactiveViewportStarted", <EventListener>start);
 
@@ -31,9 +33,11 @@ namespace Script {
     imgApple = document.getElementById("apple");
     imgBanana = document.getElementById("banana");
     imgMilk = document.getElementById("milk");
+    
+
 
     createCollectables();
-    //console.log(player);
+    
     
     
     ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
@@ -54,18 +58,29 @@ namespace Script {
     movement();
     followCamera();
     collectGroceries();
+    
   }
 
   function movement():void {
     let timeFrame: number = ƒ.Loop.timeFrameGame/ 1000;
     // ƒ.Physics.simulate();  // if physics is included and used
-    if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D])){
+
+    //--checking for keyboard input--
+    if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D]) && player.mtxLocal.translation.x < 18.4){
       player.mtxLocal.translateX(2 * timeFrame);
       changeAnimation("ASCharacterRunRight", "MCharacterRunRight");     
     } 
-    else if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_LEFT, ƒ.KEYBOARD_CODE.A])){
+    else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D])) {
+      changeAnimation("ASCharacterRunRight", "MCharacterRunRight");
+    }
+    else if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_LEFT, ƒ.KEYBOARD_CODE.A])  && player.mtxLocal.translation.x > - 4.3){
       player.mtxLocal.translateX(-2 * timeFrame);
-      changeAnimation("ASCharacterRunLeft", "MCharacterRunLeft");     
+      changeAnimation("ASCharacterRunLeft", "MCharacterRunLeft");
+    }
+    else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_LEFT, ƒ.KEYBOARD_CODE.A])){
+      changeAnimation("ASCharacterRunLeft", "MCharacterRunLeft"); 
+    
+        
     } else{
       changeAnimation("ASCharacterIdle", "MCharacterIdle");
     }
@@ -112,6 +127,7 @@ namespace Script {
      
     }
     player.mtxLocal.translation = pos;
+
   }
 
   function changeAnimation(_status: string, _material: string): void {
@@ -163,6 +179,7 @@ namespace Script {
       if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5)
         return tile;
   }}
+
 
     function followCamera(): void{
       let mutator: ƒ.Mutator = player.mtxLocal.getMutator();
