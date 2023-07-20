@@ -6,18 +6,15 @@ var Script;
     class Collectable extends ƒ.Node {
         constructor(_name, _x, _y) {
             super("collectable");
-            this.textureApple = ƒ.Project.getResourcesByName("MApple")[0];
-            this.textureBanana = ƒ.Project.getResourcesByName("MBanana")[0];
-            this.textureMilk = ƒ.Project.getResourcesByName("MMilk")[0];
             this.addComponent(new ƒ.ComponentMesh(Collectable.collectableMesh));
             if (_name = "apple") {
-                this.addComponent(new ƒ.ComponentMaterial(this.textureApple));
+                this.addComponent(new ƒ.ComponentMaterial(Collectable.textureApple));
             }
             else if (_name = "banana") {
-                this.addComponent(new ƒ.ComponentMaterial(this.textureBanana));
+                this.addComponent(new ƒ.ComponentMaterial(Collectable.textureBanana));
             }
             else if (_name = "milk") {
-                this.addComponent(new ƒ.ComponentMaterial(this.textureMilk));
+                this.addComponent(new ƒ.ComponentMaterial(Collectable.textureMilk));
             }
             this.setName(_name);
             this.setPos(_x, _y);
@@ -35,6 +32,9 @@ var Script;
         }
     }
     Collectable.collectableMesh = new ƒ.MeshQuad("collectableMesh");
+    Collectable.textureApple = ƒ.Project.getResourcesByName("MApple")[0];
+    Collectable.textureBanana = ƒ.Project.getResourcesByName("MBanana")[0];
+    Collectable.textureMilk = ƒ.Project.getResourcesByName("MMilk")[0];
     Script.Collectable = Collectable;
 })(Script || (Script = {}));
 var Script;
