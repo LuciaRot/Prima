@@ -5,18 +5,6 @@
       "name": "backgroundMesh"
     }
   },
-  "Material|2023-07-14T13:47:47.232Z|20914": {
-    "ƒ.Material": {
-      "name": "backgroundMaterial",
-      "idResource": "Material|2023-07-14T13:47:47.232Z|20914",
-      "shader": "ShaderLit",
-      "coat": {
-        "ƒ.CoatColored": {
-          "color": "[0.49019607843137253, 0.30196078431372547, 0.996078431372549, 1]"
-        }
-      }
-    }
-  },
   "MeshQuad|2023-07-14T13:50:52.432Z|42393": {
     "ƒ.MeshQuad": {
       "idResource": "MeshQuad|2023-07-14T13:50:52.432Z|42393",
@@ -115,30 +103,6 @@
       "name": "collectibleMesh"
     }
   },
-  "Material|2023-07-17T17:08:43.255Z|57420": {
-    "ƒ.Material": {
-      "name": "MApple",
-      "idResource": "Material|2023-07-17T17:08:43.255Z|57420",
-      "shader": "ShaderLitTextured",
-      "coat": {
-        "ƒ.CoatTextured": {
-          "color": "[1, 1, 1, 1]",
-          "idTexture": "TextureImage|2023-07-17T17:09:37.573Z|90245"
-        }
-      }
-    }
-  },
-  "TextureImage|2023-07-17T17:09:37.573Z|90245": {
-    "ƒ.TextureImage": {
-      "url": "apple.png",
-      "type": "TextureImage",
-      "Texture": {
-        "idResource": "TextureImage|2023-07-17T17:09:37.573Z|90245",
-        "name": "apple.png",
-        "mipmap": "CRISP"
-      }
-    }
-  },
   "MeshQuad|2023-07-18T12:59:26.206Z|49213": {
     "ƒ.MeshQuad": {
       "idResource": "MeshQuad|2023-07-18T12:59:26.206Z|49213",
@@ -154,6 +118,30 @@
         "ƒ.CoatColored": {
           "color": "[0.9176470588235294, 1, 0.2784313725490196, 1]"
         }
+      }
+    }
+  },
+  "Material|2023-07-20T13:08:53.173Z|79624": {
+    "ƒ.Material": {
+      "name": "backgroundMaterial",
+      "idResource": "Material|2023-07-20T13:08:53.173Z|79624",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-07-20T13:09:12.903Z|28836"
+        }
+      }
+    }
+  },
+  "TextureImage|2023-07-20T13:09:12.903Z|28836": {
+    "ƒ.TextureImage": {
+      "url": "graphics\\background.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-20T13:09:12.903Z|28836",
+        "name": "TIBackground",
+        "mipmap": "CRISP"
       }
     }
   },
@@ -204,62 +192,6 @@
         ]
       },
       "children": [
-        {
-          "ƒ.Node": {
-            "name": "background",
-            "active": true,
-            "components": {
-              "ComponentMesh": [
-                {
-                  "ƒ.ComponentMesh": {
-                    "idMesh": "MeshQuad|2023-07-14T13:46:39.849Z|02770",
-                    "pivot": {
-                      "translation": "[0, 0, 0]",
-                      "rotation": "[0, 0, 0]",
-                      "scaling": "[1, 1, 1]"
-                    },
-                    "Component": {
-                      "active": true
-                    }
-                  }
-                }
-              ],
-              "ComponentTransform": [
-                {
-                  "ƒ.ComponentTransform": {
-                    "local": {
-                      "translation": "[7, 2, 0]",
-                      "rotation": "[0, 0, 0]",
-                      "scaling": "[26, 9, 1]"
-                    },
-                    "Component": {
-                      "active": true
-                    }
-                  }
-                }
-              ],
-              "ComponentMaterial": [
-                {
-                  "ƒ.ComponentMaterial": {
-                    "sortForAlpha": false,
-                    "clrPrimary": "[1, 1, 1, 1]",
-                    "clrSecondary": "[1, 1, 1, 1]",
-                    "pivot": {
-                      "translation": "[0, 0]",
-                      "rotation": 0,
-                      "scaling": "[1, 1]"
-                    },
-                    "Component": {
-                      "active": true
-                    },
-                    "idMaterial": "Material|2023-07-14T13:47:47.232Z|20914"
-                  }
-                }
-              ]
-            },
-            "children": []
-          }
-        },
         {
           "ƒ.Node": {
             "name": "character",
@@ -389,7 +321,7 @@
         },
         {
           "ƒ.Node": {
-            "name": "collectibles",
+            "name": "collectables",
             "active": true,
             "components": {},
             "children": []
@@ -647,11 +579,7 @@
                 "ƒ.Node": {
                   "name": "upperShelves",
                   "active": true,
-                  "components": {
-                    "ComponentMesh": [],
-                    "ComponentTransform": [],
-                    "ComponentMaterial": []
-                  },
+                  "components": {},
                   "children": [
                     {
                       "ƒ.Node": {
@@ -956,6 +884,127 @@
               }
             ]
           }
+        },
+        {
+          "ƒ.Node": {
+            "name": "backgrounds",
+            "active": true,
+            "components": {},
+            "children": [
+              {
+                "ƒ.Node": {
+                  "name": "background",
+                  "active": true,
+                  "components": {
+                    "ComponentMesh": [
+                      {
+                        "ƒ.ComponentMesh": {
+                          "idMesh": "MeshQuad|2023-07-14T13:46:39.849Z|02770",
+                          "pivot": {
+                            "translation": "[0, 0, 0]",
+                            "rotation": "[0, 0, 0]",
+                            "scaling": "[1, 1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentTransform": [
+                      {
+                        "ƒ.ComponentTransform": {
+                          "local": {
+                            "translation": "[2, 2, 0]",
+                            "rotation": "[0, 0, 0]",
+                            "scaling": "[16, 9, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentMaterial": [
+                      {
+                        "ƒ.ComponentMaterial": {
+                          "sortForAlpha": false,
+                          "clrPrimary": "[1, 1, 1, 1]",
+                          "clrSecondary": "[1, 1, 1, 1]",
+                          "pivot": {
+                            "translation": "[0, 0]",
+                            "rotation": 0,
+                            "scaling": "[1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          },
+                          "idMaterial": "Material|2023-07-20T13:08:53.173Z|79624"
+                        }
+                      }
+                    ]
+                  },
+                  "children": []
+                }
+              },
+              {
+                "ƒ.Node": {
+                  "name": "background",
+                  "active": true,
+                  "components": {
+                    "ComponentMesh": [
+                      {
+                        "ƒ.ComponentMesh": {
+                          "idMesh": "MeshQuad|2023-07-14T13:46:39.849Z|02770",
+                          "pivot": {
+                            "translation": "[0, 0, 0]",
+                            "rotation": "[0, 0, 0]",
+                            "scaling": "[1, 1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentTransform": [
+                      {
+                        "ƒ.ComponentTransform": {
+                          "local": {
+                            "translation": "[17.899995803833008, 2, 0]",
+                            "rotation": "[0, 0, 0]",
+                            "scaling": "[16, 9, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentMaterial": [
+                      {
+                        "ƒ.ComponentMaterial": {
+                          "sortForAlpha": false,
+                          "clrPrimary": "[1, 1, 1, 1]",
+                          "clrSecondary": "[1, 1, 1, 1]",
+                          "pivot": {
+                            "translation": "[0, 0]",
+                            "rotation": 0,
+                            "scaling": "[1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          },
+                          "idMaterial": "Material|2023-07-20T13:08:53.173Z|79624"
+                        }
+                      }
+                    ]
+                  },
+                  "children": []
+                }
+              }
+            ]
+          }
         }
       ],
       "idResource": "Graph|2023-07-14T12:59:02.401Z|80427",
@@ -1023,6 +1072,78 @@
         "events": {},
         "framesPerSecond": 6,
         "animationStructure": {}
+      }
+    }
+  },
+  "TextureImage|2023-07-20T14:51:10.297Z|37608": {
+    "ƒ.TextureImage": {
+      "url": "collectables\\apple.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-20T14:51:10.297Z|37608",
+        "name": "TIApple",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "TextureImage|2023-07-20T14:51:12.002Z|48745": {
+    "ƒ.TextureImage": {
+      "url": "collectables\\banana.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-20T14:51:12.002Z|48745",
+        "name": "TIBanana",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "TextureImage|2023-07-20T14:51:13.827Z|06525": {
+    "ƒ.TextureImage": {
+      "url": "collectables\\milk.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-20T14:51:13.827Z|06525",
+        "name": "TIMilk",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "Material|2023-07-20T14:51:41.959Z|23011": {
+    "ƒ.Material": {
+      "name": "MApple",
+      "idResource": "Material|2023-07-20T14:51:41.959Z|23011",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-07-20T14:51:10.297Z|37608"
+        }
+      }
+    }
+  },
+  "Material|2023-07-20T14:51:53.662Z|84391": {
+    "ƒ.Material": {
+      "name": "MBanana",
+      "idResource": "Material|2023-07-20T14:51:53.662Z|84391",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-07-20T14:51:12.002Z|48745"
+        }
+      }
+    }
+  },
+  "Material|2023-07-20T14:52:04.911Z|50404": {
+    "ƒ.Material": {
+      "name": "MMilk",
+      "idResource": "Material|2023-07-20T14:52:04.911Z|50404",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-07-20T14:51:13.827Z|06525"
+        }
       }
     }
   }

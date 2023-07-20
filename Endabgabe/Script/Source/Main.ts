@@ -9,6 +9,7 @@ namespace Script {
   let ySpeed: number = 0;
   let isGrounded: boolean = true;
   const gravity: number = -9.81;
+  let collectables : ƒ.Node;
 
   document.addEventListener("interactiveViewportStarted", <EventListener>start);
 
@@ -21,10 +22,16 @@ namespace Script {
     cmpCamera = graph.getComponent(ƒ.ComponentCamera);
     viewport.camera = cmpCamera;
     player = viewport.getBranch().getChildrenByName("character")[0];
+    collectables = viewport.getBranch().getChildrenByName("collectables")[0];
     //console.log(player);
     
     ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
     ƒ.Loop.start();  // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
+    
+    let apple : Collectable = new Collectable("apple", 0, 2);
+    collectables.addChild(apple);
+    /* console.log(collectables); */
+    /* console.log(apple.textureApple, apple.textureBanana, apple.textureMilk); */
 
   }
 
@@ -82,7 +89,7 @@ namespace Script {
       ySpeed = 0;
       pos.y = upperShelfCollided.mtxWorld.translation.y + 0.18;
       isGrounded = true;
-      console.log("grounded");
+      /* console.log("grounded"); */
     }
     player.mtxLocal.translation = pos;
 

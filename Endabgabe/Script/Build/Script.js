@@ -3,6 +3,44 @@ var Script;
 (function (Script) {
     var ƒ = FudgeCore;
     ƒ.Project.registerScriptNamespace(Script); // Register the namespace to FUDGE for serialization
+    class Collectable extends ƒ.Node {
+        constructor(_name, _x, _y) {
+            super("collectable");
+            this.textureApple = ƒ.Project.getResourcesByName("MApple")[0];
+            this.textureBanana = ƒ.Project.getResourcesByName("MBanana")[0];
+            this.textureMilk = ƒ.Project.getResourcesByName("MMilk")[0];
+            this.addComponent(new ƒ.ComponentMesh(Collectable.collectableMesh));
+            if (_name = "apple") {
+                this.addComponent(new ƒ.ComponentMaterial(this.textureApple));
+            }
+            else if (_name = "banana") {
+                this.addComponent(new ƒ.ComponentMaterial(this.textureBanana));
+            }
+            else if (_name = "milk") {
+                this.addComponent(new ƒ.ComponentMaterial(this.textureMilk));
+            }
+            this.setName(_name);
+            this.setPos(_x, _y);
+            this.addComponent(new ƒ.ComponentTransform());
+            this.mtxWorld.translation.z = 2;
+        }
+        setName(_name) {
+            this.name = _name;
+        }
+        setPos(_x, _y) {
+            this.mtxWorld.translation.x = _x;
+            this.mtxWorld.translation.y = _y;
+        }
+        delete() {
+        }
+    }
+    Collectable.collectableMesh = new ƒ.MeshQuad("collectableMesh");
+    Script.Collectable = Collectable;
+})(Script || (Script = {}));
+var Script;
+(function (Script) {
+    var ƒ = FudgeCore;
+    ƒ.Project.registerScriptNamespace(Script); // Register the namespace to FUDGE for serialization
     class CustomComponentScript extends ƒ.ComponentScript {
         constructor() {
             super();
@@ -47,6 +85,7 @@ var Script;
     let ySpeed = 0;
     let isGrounded = true;
     const gravity = -9.81;
+    let collectables;
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
@@ -54,9 +93,14 @@ var Script;
         cmpCamera = graph.getComponent(ƒ.ComponentCamera);
         viewport.camera = cmpCamera;
         player = viewport.getBranch().getChildrenByName("character")[0];
+        collectables = viewport.getBranch().getChildrenByName("collectables")[0];
         //console.log(player);
         ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
+        let apple = new Script.Collectable("apple", 0, 2);
+        collectables.addChild(apple);
+        /* console.log(collectables); */
+        /* console.log(apple.textureApple, apple.textureBanana, apple.textureMilk); */
     }
     function update(_event) {
         // ƒ.Physics.simulate();  // if physics is included and used
@@ -105,7 +149,7 @@ var Script;
             ySpeed = 0;
             pos.y = upperShelfCollided.mtxWorld.translation.y + 0.18;
             isGrounded = true;
-            console.log("grounded");
+            /* console.log("grounded"); */
         }
         player.mtxLocal.translation = pos;
         let bottomBigShelfCollided = CollisionBottomBigShelf(pos);
