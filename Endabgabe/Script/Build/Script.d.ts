@@ -2,9 +2,9 @@ declare namespace Script {
     import ƒ = FudgeCore;
     class Collectable extends ƒ.Node {
         static collectableMesh: ƒ.MeshQuad;
-        static textureApple: ƒ.Material;
-        static textureBanana: ƒ.Material;
-        static textureMilk: ƒ.Material;
+        textureApple: ƒ.Material;
+        textureBanana: ƒ.Material;
+        textureMilk: ƒ.Material;
         constructor(_name: string, _x: number, _y: number);
         setName(_name: string): void;
         setPos(_x: number, _y: number): void;

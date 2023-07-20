@@ -10,6 +10,10 @@ namespace Script {
   let isGrounded: boolean = true;
   const gravity: number = -9.81;
   let collectables : ƒ.Node;
+  let divGroceries: HTMLElement;
+  let imgApple: HTMLElement;
+  let imgBanana: HTMLElement;
+  let imgMilk: HTMLElement;
 
   document.addEventListener("interactiveViewportStarted", <EventListener>start);
 
@@ -23,13 +27,19 @@ namespace Script {
     viewport.camera = cmpCamera;
     player = viewport.getBranch().getChildrenByName("character")[0];
     collectables = viewport.getBranch().getChildrenByName("collectables")[0];
+    divGroceries = document.getElementById("shoppinglist");
+    imgApple = document.getElementById("apple");
+    imgBanana = document.getElementById("banana");
+    imgMilk = document.getElementById("milk");
+
+    createCollectables();
     //console.log(player);
+    
     
     ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
     ƒ.Loop.start();  // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
     
-    let apple : Collectable = new Collectable("apple", 0, 2);
-    collectables.addChild(apple);
+   
     /* console.log(collectables); */
     /* console.log(apple.textureApple, apple.textureBanana, apple.textureMilk); */
 
@@ -43,6 +53,7 @@ namespace Script {
    
     movement();
     followCamera();
+    collectGroceries();
   }
 
   function movement():void {
@@ -158,6 +169,45 @@ namespace Script {
       viewport.camera.mtxPivot.mutate(
         { "translation": { "x": mutator.translation.x, "y": mutator.translation.y + 1 } }
       );
+    }
+
+    function createCollectables(): void {
+      let apple : Collectable = new Collectable("apple", -1.5, 0.8);
+      collectables.addChild(apple);
+
+      let banana: Collectable = new Collectable("banana", 7, 2.6);
+      collectables.addChild(banana);
+    
+      let milk: Collectable = new Collectable("milk", 14, 1.9);
+      collectables.addChild(milk);
+    }
+
+    function collectGroceries(): void {
+      let groceries: ƒ.Node[] = collectables.getChildren();
+      let playerPos: ƒ.Vector3 = player.mtxLocal.translation;
+      let groceryPos: ƒ.Vector3;
+      let name: string;
+      let img: HTMLElement;
+      for (let grocery of groceries) {
+        groceryPos = grocery.mtxLocal.translation;
+        name = grocery.name;
+        if (name == "apple") {
+          img = imgApple;
+        }
+        else if (name == "banana") {
+          img = imgBanana;
+        }
+        else if (name == "milk") {
+          img = imgMilk;
+        }
+        
+        if (playerPos.x > groceryPos.x - 0.5 && playerPos.x < groceryPos.x + 0.5 && playerPos.y < groceryPos.y + 0.5 && playerPos.y > groceryPos.y - 0.5) {
+        collectables.removeChild(grocery);
+        console.log(name);
+        divGroceries.removeChild(img);
+        }
+
+      }
     }
   
 }

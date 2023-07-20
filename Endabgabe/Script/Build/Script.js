@@ -6,35 +6,36 @@ var Script;
     class Collectable extends ƒ.Node {
         constructor(_name, _x, _y) {
             super("collectable");
-            this.addComponent(new ƒ.ComponentMesh(Collectable.collectableMesh));
-            if (_name = "apple") {
-                this.addComponent(new ƒ.ComponentMaterial(Collectable.textureApple));
-            }
-            else if (_name = "banana") {
-                this.addComponent(new ƒ.ComponentMaterial(Collectable.textureBanana));
-            }
-            else if (_name = "milk") {
-                this.addComponent(new ƒ.ComponentMaterial(Collectable.textureMilk));
-            }
+            this.textureApple = ƒ.Project.getResourcesByName("MApple")[0];
+            this.textureBanana = ƒ.Project.getResourcesByName("MBanana")[0];
+            this.textureMilk = ƒ.Project.getResourcesByName("MMilk")[0];
+            let vector = new ƒ.Vector3(_x, _y, 1);
             this.setName(_name);
-            this.setPos(_x, _y);
-            this.addComponent(new ƒ.ComponentTransform());
-            this.mtxWorld.translation.z = 2;
+            this.addComponent(new ƒ.ComponentMesh(Collectable.collectableMesh));
+            if (this.name == "apple") {
+                this.addComponent(new ƒ.ComponentMaterial(this.textureApple));
+            }
+            else if (this.name == "banana") {
+                this.addComponent(new ƒ.ComponentMaterial(this.textureBanana));
+            }
+            else if (this.name == "milk") {
+                this.addComponent(new ƒ.ComponentMaterial(this.textureMilk));
+            }
+            this.addComponent(new ƒ.ComponentTransform(ƒ.Matrix4x4.TRANSLATION(vector)));
+            this.mtxLocal.scaleX(0.5);
+            this.mtxLocal.scaleY(0.5);
         }
         setName(_name) {
             this.name = _name;
         }
         setPos(_x, _y) {
-            this.mtxWorld.translation.x = _x;
-            this.mtxWorld.translation.y = _y;
+            this.mtxLocal.translation.x = _x;
+            this.mtxLocal.translation.y = _y;
         }
         delete() {
         }
     }
     Collectable.collectableMesh = new ƒ.MeshQuad("collectableMesh");
-    Collectable.textureApple = ƒ.Project.getResourcesByName("MApple")[0];
-    Collectable.textureBanana = ƒ.Project.getResourcesByName("MBanana")[0];
-    Collectable.textureMilk = ƒ.Project.getResourcesByName("MMilk")[0];
     Script.Collectable = Collectable;
 })(Script || (Script = {}));
 var Script;
@@ -86,6 +87,10 @@ var Script;
     let isGrounded = true;
     const gravity = -9.81;
     let collectables;
+    let divGroceries;
+    let imgApple;
+    let imgBanana;
+    let imgMilk;
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
@@ -94,11 +99,14 @@ var Script;
         viewport.camera = cmpCamera;
         player = viewport.getBranch().getChildrenByName("character")[0];
         collectables = viewport.getBranch().getChildrenByName("collectables")[0];
+        divGroceries = document.getElementById("shoppinglist");
+        imgApple = document.getElementById("apple");
+        imgBanana = document.getElementById("banana");
+        imgMilk = document.getElementById("milk");
+        createCollectables();
         //console.log(player);
         ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
-        let apple = new Script.Collectable("apple", 0, 2);
-        collectables.addChild(apple);
         /* console.log(collectables); */
         /* console.log(apple.textureApple, apple.textureBanana, apple.textureMilk); */
     }
@@ -108,6 +116,7 @@ var Script;
         ƒ.AudioManager.default.update();
         movement();
         followCamera();
+        collectGroceries();
     }
     function movement() {
         let timeFrame = ƒ.Loop.timeFrameGame / 1000;
@@ -208,6 +217,39 @@ var Script;
     function followCamera() {
         let mutator = player.mtxLocal.getMutator();
         viewport.camera.mtxPivot.mutate({ "translation": { "x": mutator.translation.x, "y": mutator.translation.y + 1 } });
+    }
+    function createCollectables() {
+        let apple = new Script.Collectable("apple", -1.5, 0.8);
+        collectables.addChild(apple);
+        let banana = new Script.Collectable("banana", 7, 2.6);
+        collectables.addChild(banana);
+        let milk = new Script.Collectable("milk", 14, 1.9);
+        collectables.addChild(milk);
+    }
+    function collectGroceries() {
+        let groceries = collectables.getChildren();
+        let playerPos = player.mtxLocal.translation;
+        let groceryPos;
+        let name;
+        let img;
+        for (let grocery of groceries) {
+            groceryPos = grocery.mtxLocal.translation;
+            name = grocery.name;
+            if (name == "apple") {
+                img = imgApple;
+            }
+            else if (name == "banana") {
+                img = imgBanana;
+            }
+            else if (name == "milk") {
+                img = imgMilk;
+            }
+            if (playerPos.x > groceryPos.x - 0.5 && playerPos.x < groceryPos.x + 0.5 && playerPos.y < groceryPos.y + 0.5 && playerPos.y > groceryPos.y - 0.5) {
+                collectables.removeChild(grocery);
+                console.log(name);
+                divGroceries.removeChild(img);
+            }
+        }
     }
 })(Script || (Script = {}));
 //# sourceMappingURL=Script.js.map
