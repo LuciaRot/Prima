@@ -94,6 +94,7 @@ var Script;
     let groceryList = [];
     let img = [];
     let sound;
+    let win = true;
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
@@ -269,13 +270,15 @@ var Script;
                 let img = document.getElementById(name);
                 divGroceries.removeChild(img);
                 checkGrocery(name);
-                addSound();
+                addSound("pop");
             }
         }
     }
     function handlePay(_event) {
-        if (groceryList.length == 0) {
+        if (groceryList.length == 0 && win == true) {
             console.log("wuhuuuu");
+            addSoundRegister("win");
+            win = false;
         }
         else {
             console.log("notyet");
@@ -302,10 +305,18 @@ var Script;
         ƒ.AudioManager.default.listenWith(audioListener);
         ƒ.AudioManager.default.listenTo(viewport.getBranch());
     }
-    function addSound() {
+    function addSound(_sound) {
         let audio = collectables.getComponent(ƒ.ComponentAudio);
-        sound = ƒ.Project.getResourcesByName("pop")[0];
+        sound = ƒ.Project.getResourcesByName(_sound)[0];
         console.log(sound);
+        audio.setAudio(sound);
+        audio.play(true);
+    }
+    function addSoundRegister(_sound) {
+        let audio = viewport.getBranch().getChildrenByName("cashRegister")[0].getComponent(ƒ.ComponentAudio);
+        sound = ƒ.Project.getResourcesByName(_sound)[0];
+        console.log(sound);
+        console.log(audio);
         //audio.setAudio(sound);
         audio.play(true);
     }

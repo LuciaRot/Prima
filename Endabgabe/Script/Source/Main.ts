@@ -17,6 +17,7 @@ namespace Script {
   let groceryList: string[] = [];
   let img: HTMLElement[] = [];
   let sound: ƒ.Audio;
+  let win: boolean = true;
 
 
   document.addEventListener("interactiveViewportStarted", <EventListener>start);
@@ -256,7 +257,7 @@ namespace Script {
         let img: HTMLElement = document.getElementById(name);
         divGroceries.removeChild(img);
         checkGrocery(name);
-        addSound();
+        addSound("pop");
       }
 
     }
@@ -264,8 +265,10 @@ namespace Script {
 
   }
   function handlePay(_event: CustomEvent): void {
-    if (groceryList.length == 0) {
+    if (groceryList.length == 0 && win == true) {
       console.log("wuhuuuu");
+      addSoundRegister("win");
+      win = false;
     }
     else {
       console.log("notyet");
@@ -298,10 +301,19 @@ namespace Script {
     ƒ.AudioManager.default.listenTo(viewport.getBranch());
   
   }
- function addSound(): void {
+ function addSound(_sound: string): void {
   let audio: ƒ.ComponentAudio = collectables.getComponent(ƒ.ComponentAudio);
-  sound = ƒ.Project.getResourcesByName("pop")[0] as ƒ.Audio;
+  sound = ƒ.Project.getResourcesByName(_sound)[0] as ƒ.Audio;
   console.log(sound);
+  audio.setAudio(sound);
+  audio.play(true);
+ }
+
+ function addSoundRegister(_sound: string): void {
+  let audio: ƒ.ComponentAudio = viewport.getBranch().getChildrenByName("cashRegister")[0].getComponent(ƒ.ComponentAudio);
+  sound = ƒ.Project.getResourcesByName(_sound)[0] as ƒ.Audio;
+  console.log(sound);
+  console.log(audio);
   //audio.setAudio(sound);
   audio.play(true);
  }

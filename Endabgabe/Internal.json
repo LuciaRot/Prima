@@ -289,6 +289,22 @@
       }
     }
   },
+  "Audio|2023-07-21T12:58:57.731Z|38314": {
+    "ƒ.Audio": {
+      "url": "audio\\mixkit-gimme-that-groove-872.mp3",
+      "idResource": "Audio|2023-07-21T12:58:57.731Z|38314",
+      "name": "audio\\mixkit-gimme-that-groove-872.mp3",
+      "type": "Audio"
+    }
+  },
+  "Audio|2023-07-21T13:15:11.686Z|77880": {
+    "ƒ.Audio": {
+      "url": "audio\\mixkit-long-pop-2358.wav",
+      "idResource": "Audio|2023-07-21T13:15:11.686Z|77880",
+      "name": "pop",
+      "type": "Audio"
+    }
+  },
   "Graph|2023-07-14T12:59:02.401Z|80427": {
     "ƒ.Graph": {
       "name": "NewGraph",
@@ -341,7 +357,7 @@
               "idResource": "Audio|2023-07-21T12:58:57.731Z|38314",
               "playing": true,
               "loop": true,
-              "volume": 0.5999999046325684
+              "volume": 0.3999999165534973
             }
           }
         ],
@@ -420,7 +436,9 @@
                     "animateInEditor": false
                   }
                 }
-              ]
+              ],
+              "ComponentAudioListener": [],
+              "ComponentAudio": []
             },
             "children": []
           }
@@ -1229,7 +1247,26 @@
           "ƒ.Node": {
             "name": "cashRegister",
             "active": true,
-            "components": {},
+            "components": {
+              "ComponentAudioListener": [
+                {
+                  "ƒ.ComponentAudioListener": {
+                    "active": true
+                  }
+                }
+              ],
+              "ComponentAudio": [
+                {
+                  "ƒ.ComponentAudio": {
+                    "active": true,
+                    "idResource": "Audio|2023-07-21T13:40:16.783Z|30889",
+                    "playing": false,
+                    "loop": false,
+                    "volume": 0.19999992847442627
+                  }
+                }
+              ]
+            },
             "children": [
               {
                 "ƒ.Node": {
@@ -1676,19 +1713,19 @@
       }
     }
   },
-  "Audio|2023-07-21T12:58:57.731Z|38314": {
+  "Audio|2023-07-21T13:36:22.469Z|66061": {
     "ƒ.Audio": {
-      "url": "audio\\mixkit-gimme-that-groove-872.mp3",
-      "idResource": "Audio|2023-07-21T12:58:57.731Z|38314",
-      "name": "audio\\mixkit-gimme-that-groove-872.mp3",
+      "url": "audio\\step.wav",
+      "idResource": "Audio|2023-07-21T13:36:22.469Z|66061",
+      "name": "audio\\step.wav",
       "type": "Audio"
     }
   },
-  "Audio|2023-07-21T13:15:11.686Z|77880": {
+  "Audio|2023-07-21T13:40:16.783Z|30889": {
     "ƒ.Audio": {
-      "url": "audio\\mixkit-long-pop-2358.wav",
-      "idResource": "Audio|2023-07-21T13:15:11.686Z|77880",
-      "name": "pop",
+      "url": "audio\\mixkit-arcade-retro-run-sound-220.wav",
+      "idResource": "Audio|2023-07-21T13:40:16.783Z|30889",
+      "name": "win",
       "type": "Audio"
     }
   }
