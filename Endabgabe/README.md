@@ -28,7 +28,7 @@ This game is a little jump and run where you have to collect the groceries on yo
 |  5 | Extend              | I used a class for the collectables to make it easier to spawn the collectables in the level.                       |
 |  6 | Sound               | I used background music on the level, aswell as "pop" sounds on the collectables, when they are collected. There is also a sound when the player completes the game successfully.                                            |
 |  7 | VUI                 |The VUI consists of a grocery list, that tells the player which groceries they still need to collect. It updates based on the groceries the player collects. It also shows the lives a player has left, indicated by hearts at the top right of the viewport.                                      |
-|  8 | Event-System        |I created a custum event for the "checkout" at the end of the game. When the player brings the groceries to the cash register this event triggers.|
+|  8 | Event-System        |I created a custom event for the "checkout" at the end of the game. When the player brings the groceries to the cash register this event triggers.|
 |  9 | External Data       | The config.json sets the lives of the player.                      |
 |  A | Light               | There is an Ambient Light and all the Textures have a ShaderLitTexture.                                                                      |
 |  B | Physics             | ---                                |
