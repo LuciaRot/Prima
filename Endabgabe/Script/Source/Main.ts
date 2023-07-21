@@ -26,6 +26,9 @@ namespace Script {
 
     graph = <ƒ.Graph>viewport.getBranch();
 
+    ƒ.AudioManager.default.listenWith(graph.getComponent(ƒ.ComponentAudioListener));
+    ƒ.AudioManager.default.listenTo(graph);
+
     cmpCamera = graph.getComponent(ƒ.ComponentCamera);
     viewport.camera = cmpCamera;
     player = viewport.getBranch().getChildrenByName("character")[0];
@@ -37,16 +40,16 @@ namespace Script {
 
     createGroceryList();
     createCollectables();
+    addAudio();
 
 
-
+   
 
     ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
     ƒ.Loop.start();  // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
 
 
-    /* console.log(collectables); */
-    /* console.log(apple.textureApple, apple.textureBanana, apple.textureMilk); */
+  
     cashRegister.addEventListener("pay", handlePay);
 
   }
@@ -287,6 +290,13 @@ namespace Script {
       console.log(groceryList);
       break;
     }
+  }
+
+  function addAudio() {
+    let audioListener: ƒ.ComponentAudioListener = viewport.getBranch().getComponent(ƒ.ComponentAudioListener);
+    ƒ.AudioManager.default.listenWith(audioListener);
+    ƒ.AudioManager.default.listenTo(viewport.getBranch());
+  
   }
 
 }

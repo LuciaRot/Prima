@@ -97,6 +97,8 @@ var Script;
     function start(_event) {
         viewport = _event.detail;
         graph = viewport.getBranch();
+        ƒ.AudioManager.default.listenWith(graph.getComponent(ƒ.ComponentAudioListener));
+        ƒ.AudioManager.default.listenTo(graph);
         cmpCamera = graph.getComponent(ƒ.ComponentCamera);
         viewport.camera = cmpCamera;
         player = viewport.getBranch().getChildrenByName("character")[0];
@@ -105,10 +107,9 @@ var Script;
         cashRegister = viewport.getBranch().getChildrenByName("cashRegister")[0].getChildrenByName("register")[0];
         createGroceryList();
         createCollectables();
+        addAudio();
         ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
-        /* console.log(collectables); */
-        /* console.log(apple.textureApple, apple.textureBanana, apple.textureMilk); */
         cashRegister.addEventListener("pay", handlePay);
     }
     function update(_event) {
@@ -294,6 +295,11 @@ var Script;
             console.log(groceryList);
             break;
         }
+    }
+    function addAudio() {
+        let audioListener = viewport.getBranch().getComponent(ƒ.ComponentAudioListener);
+        ƒ.AudioManager.default.listenWith(audioListener);
+        ƒ.AudioManager.default.listenTo(viewport.getBranch());
     }
 })(Script || (Script = {}));
 //# sourceMappingURL=Script.js.map

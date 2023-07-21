@@ -333,6 +333,24 @@
               }
             }
           }
+        ],
+        "ComponentAudio": [
+          {
+            "ƒ.ComponentAudio": {
+              "active": true,
+              "idResource": "Audio|2023-07-21T12:58:57.731Z|38314",
+              "playing": true,
+              "loop": true,
+              "volume": 0.5999999046325684
+            }
+          }
+        ],
+        "ComponentAudioListener": [
+          {
+            "ƒ.ComponentAudioListener": {
+              "active": true
+            }
+          }
         ]
       },
       "children": [
@@ -1637,6 +1655,14 @@
           "color": "[1, 1, 1, 1]"
         }
       }
+    }
+  },
+  "Audio|2023-07-21T12:58:57.731Z|38314": {
+    "ƒ.Audio": {
+      "url": "audio\\mixkit-gimme-that-groove-872.mp3",
+      "idResource": "Audio|2023-07-21T12:58:57.731Z|38314",
+      "name": "audio\\mixkit-gimme-that-groove-872.mp3",
+      "type": "Audio"
     }
   }
 }
