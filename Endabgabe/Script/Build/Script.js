@@ -100,6 +100,8 @@ var Script;
     let animCom;
     let heartsDiv;
     let grocery1;
+    let grocery2;
+    let grocery3;
     let timeUp = true;
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
@@ -145,6 +147,8 @@ var Script;
         collectGroceries();
         CollisionCashRegister();
         grocery1.getComponent(Script.Grocery).move();
+        grocery2.getComponent(Script.Grocery).move();
+        grocery3.getComponent(Script.Grocery).move();
         checkGhostie();
     }
     function movement() {
@@ -270,14 +274,18 @@ var Script;
         collectables.addChild(grocery1);
         grocery1.addComponent(new Script.Grocery());
         grocery1.getComponent(Script.Grocery).setOrigin(grocery1);
-        let grocery2 = new Script.Collectable(groceryList[1], 7, 2.6);
+        grocery2 = new Script.Collectable(groceryList[1], 7, 2.6);
         collectables.addChild(grocery2);
-        let grocery3 = new Script.Collectable(groceryList[2], 14, 1.9);
+        grocery2.addComponent(new Script.Grocery());
+        grocery2.getComponent(Script.Grocery).setOrigin(grocery2);
+        grocery3 = new Script.Collectable(groceryList[2], 14, 1.9);
         collectables.addChild(grocery3);
+        grocery3.addComponent(new Script.Grocery());
+        grocery3.getComponent(Script.Grocery).setOrigin(grocery3);
         //--create shopping list in div--
         for (let i = 0; i < groceryList.length; i++) {
             let createImg = document.createElement("img");
-            createImg.src = "http://127.0.0.1:5500/Endabgabe/collectables/" + groceryList[i] + ".png";
+            createImg.src = "collectables/" + groceryList[i] + ".png";
             createImg.id = groceryList[i];
             divGroceries.appendChild(createImg);
             img.push(createImg);

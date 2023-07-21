@@ -23,6 +23,8 @@ namespace Script {
   let animCom: ƒ.Component;
   let heartsDiv: HTMLElement;
   let grocery1: Collectable;
+  let grocery2: Collectable;
+  let grocery3: Collectable;
   let timeUp: boolean = true;
 
 
@@ -85,6 +87,8 @@ namespace Script {
     collectGroceries();
     CollisionCashRegister();
     grocery1.getComponent(Grocery).move();
+    grocery2.getComponent(Grocery).move();
+    grocery3.getComponent(Grocery).move();
     checkGhostie();
     
 
@@ -247,16 +251,20 @@ namespace Script {
     grocery1.getComponent(Grocery).setOrigin(grocery1);
 
 
-    let grocery2: Collectable = new Collectable(groceryList[1], 7, 2.6);
+    grocery2 = new Collectable(groceryList[1], 7, 2.6);
     collectables.addChild(grocery2);
+    grocery2.addComponent(new Grocery());
+    grocery2.getComponent(Grocery).setOrigin(grocery2);
 
-    let grocery3: Collectable = new Collectable(groceryList[2], 14, 1.9);
+    grocery3 = new Collectable(groceryList[2], 14, 1.9);
     collectables.addChild(grocery3);
+    grocery3.addComponent(new Grocery());
+    grocery3.getComponent(Grocery).setOrigin(grocery3);
 
     //--create shopping list in div--
     for (let i: number = 0; i < groceryList.length; i++) {
       let createImg = document.createElement("img");
-      createImg.src = "http://127.0.0.1:5500/Endabgabe/collectables/" + groceryList[i] + ".png";
+      createImg.src = "collectables/" + groceryList[i] + ".png";
       createImg.id = groceryList[i];
       divGroceries.appendChild(createImg);
       img.push(createImg);
