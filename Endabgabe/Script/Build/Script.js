@@ -116,13 +116,13 @@ var Script;
         animCom = ghost.getComponent(ƒ.ComponentAnimator);
         heartsDiv = document.getElementById("hearts");
         heartsDiv.style.left = viewport.canvas.width - 300 + "px";
+        ghost.addComponent(new Script.Ghost());
+        ghost.getComponent(Script.Ghost).setOrigin(ghost);
+        ghost.getComponent(Script.Ghost).transit(Script.STATUS.WALK);
         fetchJson();
         createGroceryList();
         createCollectables();
         addAudio();
-        //console.log(collectables);
-        /* animateGhost();
-     */
         ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
         cashRegister.addEventListener("pay", handlePay);
@@ -351,34 +351,6 @@ var Script;
         console.log(hearts);
         createHearts();
     }
-    /* function animateGhost(): void {
-  
-      let animseq: ƒ.AnimationSequence = new ƒ.AnimationSequence();
-      animseq.addKey(new ƒ.AnimationKey(0, 0));
-      animseq.addKey(new ƒ.AnimationKey(750, 1));
-      animseq.addKey(new ƒ.AnimationKey(1000, 0));
-  
-      let animStructure: ƒ.AnimationStructure = {
-        components: {
-          ComponentTransform: [
-            {
-              "ƒ.ComponentTransform": {
-                mtxLocal: {
-                  translation: {
-                    y: animseq
-                  }
-                }
-              }
-            }
-          ]
-        }
-      };
-  
-      let animation: ƒ.Animation = new ƒ.Animation("testAnimation", animStructure);
-      let cmpAnimator: ƒ.ComponentAnimator = new ƒ.ComponentAnimator(animation);
-      ghost.addComponent(cmpAnimator);
-  
-    } */
 })(Script || (Script = {}));
 var Script;
 (function (Script) {
@@ -436,5 +408,82 @@ var Script;
     // Register the script as component for use in the editor via drag&drop
     Grocery.iSubclass = ƒ.Component.registerSubclass(Grocery);
     Script.Grocery = Grocery;
+})(Script || (Script = {}));
+var Script;
+(function (Script) {
+    var ƒ = FudgeCore;
+    var ƒAid = FudgeAid;
+    let STATUS;
+    (function (STATUS) {
+        STATUS[STATUS["STAND"] = 0] = "STAND";
+        STATUS[STATUS["WALK"] = 1] = "WALK";
+    })(STATUS = Script.STATUS || (Script.STATUS = {}));
+    ƒ.Project.registerScriptNamespace(Script); // Register the namespace to FUDGE for serialization
+    let isGoingUp = true;
+    class Ghost extends ƒAid.ComponentStateMachine {
+        constructor() {
+            super();
+            this.hndEvent = (_event) => {
+                switch (_event.type) {
+                    case "componentAdd" /* COMPONENT_ADD */:
+                        ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
+                        this.transit(STATUS.WALK);
+                        break;
+                    case "componentRemove" /* COMPONENT_REMOVE */:
+                        this.removeEventListener("componentAdd" /* COMPONENT_ADD */, this.hndEvent);
+                        this.removeEventListener("componentRemove" /* COMPONENT_REMOVE */, this.hndEvent);
+                        ƒ.Loop.removeEventListener("loopFrame" /* LOOP_FRAME */, this.update);
+                        break;
+                }
+            };
+            this.update = (_event) => {
+                this.act();
+            };
+            this.instructions = Ghost.instructions;
+            if (ƒ.Project.mode == ƒ.MODE.EDITOR)
+                return;
+            this.addEventListener("componentAdd" /* COMPONENT_ADD */, this.hndEvent);
+            this.addEventListener("componentRemove" /* COMPONENT_REMOVE */, this.hndEvent);
+        }
+        static actWalk(_machine) {
+            let ghostNode = _machine.node;
+            if (ghostNode.mtxLocal.translation.x > 15) {
+                isGoingUp = false;
+            }
+            else if (ghostNode.mtxLocal.translation.x < -3) {
+                isGoingUp = true;
+            }
+            if (isGoingUp == true) {
+                ghostNode.mtxLocal.translateX(0.08);
+            }
+            else {
+                ghostNode.mtxLocal.translateX(-0.08);
+            }
+        }
+        static actStand() {
+        }
+        static get() {
+            let setup = new ƒAid.StateMachineInstructions();
+            setup.transitDefault = Ghost.transitDefault;
+            setup.actDefault = Ghost.actDefault;
+            setup.setAction(STATUS.WALK, this.actWalk);
+            setup.setAction(STATUS.STAND, this.actStand);
+            return setup;
+        }
+        static actDefault() {
+            //dconsole.log("Goomba default");
+        }
+        static transitDefault(_machine) {
+            //console.log("Transit to", _machine.stateNext);
+        }
+        setOrigin(_node) {
+            console.log(_node.mtxLocal.translation.y);
+            this.originNode = _node;
+        }
+    }
+    Ghost.iSubclass = ƒ.Component.registerSubclass(Ghost);
+    Ghost.instructions = Ghost.get();
+    Ghost.pos = 5;
+    Script.Ghost = Ghost;
 })(Script || (Script = {}));
 //# sourceMappingURL=Script.js.map

@@ -48,25 +48,19 @@ namespace Script {
     heartsDiv = document.getElementById("hearts");
     heartsDiv.style.left = viewport.canvas.width - 300 + "px";
 
+    ghost.addComponent(new Ghost());
+    ghost.getComponent(Ghost).setOrigin(ghost);
+    ghost.getComponent(Ghost).transit(STATUS.WALK);
+
 
 
     fetchJson();
     createGroceryList();
     createCollectables();
     addAudio();
-    //console.log(collectables);
-    
-    /* animateGhost();
- */
-
-
-
-
 
     ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
     ƒ.Loop.start();  // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
-
-
 
     cashRegister.addEventListener("pay", handlePay);
 
@@ -354,33 +348,5 @@ namespace Script {
     createHearts();
   }
 
-  /* function animateGhost(): void {
-
-    let animseq: ƒ.AnimationSequence = new ƒ.AnimationSequence();
-    animseq.addKey(new ƒ.AnimationKey(0, 0));
-    animseq.addKey(new ƒ.AnimationKey(750, 1));
-    animseq.addKey(new ƒ.AnimationKey(1000, 0));
-
-    let animStructure: ƒ.AnimationStructure = {
-      components: {
-        ComponentTransform: [
-          {
-            "ƒ.ComponentTransform": {
-              mtxLocal: {
-                translation: {
-                  y: animseq
-                }
-              }
-            }
-          }
-        ]
-      }
-    };
-
-    let animation: ƒ.Animation = new ƒ.Animation("testAnimation", animStructure);
-    let cmpAnimator: ƒ.ComponentAnimator = new ƒ.ComponentAnimator(animation);
-    ghost.addComponent(cmpAnimator);
-
-  } */
-
-}
+  
+ }

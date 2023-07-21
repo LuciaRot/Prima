@@ -371,11 +371,200 @@
   "Animation|2023-07-21T16:56:39.243Z|67768": {
     "ƒ.Animation": {
       "idResource": "Animation|2023-07-21T16:56:39.243Z|67768",
-      "name": "Animation",
+      "name": "move",
       "labels": {},
       "events": {},
       "framesPerSecond": 60,
-      "animationStructure": {}
+      "animationStructure": {
+        "components": {
+          "ComponentTransform": [
+            {
+              "mtxLocal": {
+                "translation": {
+                  "y": {
+                    "keys": [
+                      {
+                        "time": null,
+                        "value": 0,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": -1,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": -2,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": -1,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": 0,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": -1,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": 0,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": 1,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": 0,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": -1,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": 0,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": 1,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": 0,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": -1,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": -1.1,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": -1.2000000000000002,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": -1.3000000000000003,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": null,
+                        "value": -1.2000000000000002,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": 500,
+                        "value": -1,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      },
+                      {
+                        "time": 1000,
+                        "value": -1.2000000000000002,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      }
+                    ],
+                    "animationSequence": true
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "Animation|2023-07-21T19:01:41.439Z|09316": {
+    "ƒ.Animation": {
+      "idResource": "Animation|2023-07-21T19:01:41.439Z|09316",
+      "name": "alsoMove",
+      "labels": {},
+      "events": {},
+      "framesPerSecond": 60,
+      "animationStructure": {
+        "components": {
+          "ComponentTransform": [
+            {
+              "mtxLocal": {
+                "translation": {
+                  "y": {
+                    "keys": [
+                      {
+                        "time": 0,
+                        "value": -1.2000000000000002,
+                        "slopeIn": 0,
+                        "slopeOut": 0,
+                        "constant": false
+                      }
+                    ],
+                    "animationSequence": true
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
     }
   },
   "Graph|2023-07-14T12:59:02.401Z|80427": {
@@ -438,6 +627,25 @@
           {
             "ƒ.ComponentAudioListener": {
               "active": true
+            }
+          }
+        ],
+        "ComponentLight": [
+          {
+            "ƒ.ComponentLight": {
+              "pivot": {
+                "translation": "[0, 0, 3]",
+                "rotation": "[0, 0, 0]",
+                "scaling": "[1, 1, 1]"
+              },
+              "light": {
+                "ƒ.LightAmbient": {
+                  "color": "[0.38823529411764707, 0.3607843137254902, 0.7568627450980392, 1]"
+                }
+              },
+              "Component": {
+                "active": true
+              }
             }
           }
         ]
@@ -1661,7 +1869,7 @@
                       {
                         "ƒ.ComponentTransform": {
                           "local": {
-                            "translation": "[0, -1.2000000476837158, 1.0010000467300415]",
+                            "translation": "[5, -1.1514372825622559, 1.0010000467300415]",
                             "rotation": "[0, 0, 0]",
                             "scaling": "[0.4999999701976776, 0.49999991059303284, 1]"
                           },
@@ -1697,10 +1905,10 @@
                           },
                           "idAnimation": "Animation|2023-07-21T16:56:39.243Z|67768",
                           "playmode": "loop",
-                          "quantization": "discrete",
+                          "quantization": "continous",
                           "scale": 1,
                           "scaleWithGameTime": true,
-                          "animateInEditor": true
+                          "animateInEditor": false
                         }
                       }
                     ]

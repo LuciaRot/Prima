@@ -35,3 +35,26 @@ declare namespace Script {
         setOrigin(_node: ƒ.Node): void;
     }
 }
+declare namespace Script {
+    import ƒ = FudgeCore;
+    import ƒAid = FudgeAid;
+    enum STATUS {
+        STAND = 0,
+        WALK = 1
+    }
+    class Ghost extends ƒAid.ComponentStateMachine<STATUS> {
+        static readonly iSubclass: number;
+        private static instructions;
+        originNode: ƒ.Node;
+        static pos: number;
+        constructor();
+        private static actWalk;
+        private static actStand;
+        static get(): ƒAid.StateMachineInstructions<STATUS>;
+        private static actDefault;
+        private hndEvent;
+        private update;
+        private static transitDefault;
+        setOrigin(_node: ƒ.Node): void;
+    }
+}
