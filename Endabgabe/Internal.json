@@ -145,6 +145,102 @@
       }
     }
   },
+  "Material|2023-07-21T08:07:33.407Z|42136": {
+    "ƒ.Material": {
+      "name": "MBottomBigShelf",
+      "idResource": "Material|2023-07-21T08:07:33.407Z|42136",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-07-21T08:24:51.465Z|65159"
+        }
+      }
+    }
+  },
+  "TextureImage|2023-07-21T08:24:51.465Z|65159": {
+    "ƒ.TextureImage": {
+      "url": "graphics\\newBottomShelf.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-21T08:24:51.465Z|65159",
+        "name": "TIBottomBigShelf",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "Material|2023-07-21T08:29:00.288Z|02755": {
+    "ƒ.Material": {
+      "name": "MShelfLeft",
+      "idResource": "Material|2023-07-21T08:29:00.288Z|02755",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-07-21T08:28:48.373Z|91319"
+        }
+      }
+    }
+  },
+  "TextureImage|2023-07-21T08:28:48.373Z|91319": {
+    "ƒ.TextureImage": {
+      "url": "graphics\\shelfLeft.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-21T08:28:48.373Z|91319",
+        "name": "TIShelfLeft",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "Material|2023-07-21T08:30:04.768Z|10421": {
+    "ƒ.Material": {
+      "name": "MShelfRight",
+      "idResource": "Material|2023-07-21T08:30:04.768Z|10421",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-07-21T08:29:54.236Z|65079"
+        }
+      }
+    }
+  },
+  "TextureImage|2023-07-21T08:29:54.236Z|65079": {
+    "ƒ.TextureImage": {
+      "url": "graphics\\shelfRight.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-21T08:29:54.236Z|65079",
+        "name": "TIShelfRight",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "Material|2023-07-21T08:27:50.819Z|40080": {
+    "ƒ.Material": {
+      "name": "MUpperShelf",
+      "idResource": "Material|2023-07-21T08:27:50.819Z|40080",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-07-21T08:27:31.961Z|56950"
+        }
+      }
+    }
+  },
+  "TextureImage|2023-07-21T08:27:31.961Z|56950": {
+    "ƒ.TextureImage": {
+      "url": "graphics\\upperShelfNew.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-21T08:27:31.961Z|56950",
+        "name": "TIUpperShelf",
+        "mipmap": "CRISP"
+      }
+    }
+  },
   "Graph|2023-07-14T12:59:02.401Z|80427": {
     "ƒ.Graph": {
       "name": "NewGraph",
@@ -289,7 +385,7 @@
                     "local": {
                       "translation": "[7, -2, 1]",
                       "rotation": "[0, 0, 0]",
-                      "scaling": "[24, 1, 1]"
+                      "scaling": "[25, 1, 1]"
                     },
                     "Component": {
                       "active": true
@@ -306,12 +402,12 @@
                     "pivot": {
                       "translation": "[0, 0]",
                       "rotation": 0,
-                      "scaling": "[1, 1]"
+                      "scaling": "[3, 1]"
                     },
                     "Component": {
                       "active": true
                     },
-                    "idMaterial": "Material|2023-07-17T15:55:26.268Z|33605"
+                    "idMaterial": "Material|2023-07-21T08:58:20.696Z|20710"
                   }
                 }
               ]
@@ -382,12 +478,12 @@
                                 "pivot": {
                                   "translation": "[0, 0]",
                                   "rotation": 0,
-                                  "scaling": "[1, 1]"
+                                  "scaling": "[1, 0.3999999165534973]"
                                 },
                                 "Component": {
                                   "active": true
                                 },
-                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                                "idMaterial": "Material|2023-07-21T08:07:33.407Z|42136"
                               }
                             }
                           ]
@@ -438,12 +534,12 @@
                                 "pivot": {
                                   "translation": "[0, 0]",
                                   "rotation": 0,
-                                  "scaling": "[1, 1]"
+                                  "scaling": "[1, 0.5999999642372131]"
                                 },
                                 "Component": {
                                   "active": true
                                 },
-                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                                "idMaterial": "Material|2023-07-21T08:07:33.407Z|42136"
                               }
                             }
                           ]
@@ -494,12 +590,12 @@
                                 "pivot": {
                                   "translation": "[0, 0]",
                                   "rotation": 0,
-                                  "scaling": "[1, 1]"
+                                  "scaling": "[1, 0.3999999165534973]"
                                 },
                                 "Component": {
                                   "active": true
                                 },
-                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                                "idMaterial": "Material|2023-07-21T08:07:33.407Z|42136"
                               }
                             }
                           ]
@@ -564,7 +660,7 @@
                                 "Component": {
                                   "active": true
                                 },
-                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                                "idMaterial": "Material|2023-07-21T08:29:00.288Z|02755"
                               }
                             }
                           ]
@@ -620,7 +716,7 @@
                                 "Component": {
                                   "active": true
                                 },
-                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                                "idMaterial": "Material|2023-07-21T08:30:04.768Z|10421"
                               }
                             }
                           ]
@@ -685,7 +781,7 @@
                                 "Component": {
                                   "active": true
                                 },
-                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                                "idMaterial": "Material|2023-07-21T08:27:50.819Z|40080"
                               }
                             }
                           ]
@@ -741,7 +837,7 @@
                                 "Component": {
                                   "active": true
                                 },
-                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                                "idMaterial": "Material|2023-07-21T08:27:50.819Z|40080"
                               }
                             }
                           ]
@@ -797,7 +893,7 @@
                                 "Component": {
                                   "active": true
                                 },
-                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                                "idMaterial": "Material|2023-07-21T08:27:50.819Z|40080"
                               }
                             }
                           ]
@@ -853,7 +949,7 @@
                                 "Component": {
                                   "active": true
                                 },
-                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                                "idMaterial": "Material|2023-07-21T08:27:50.819Z|40080"
                               }
                             }
                           ]
@@ -918,7 +1014,7 @@
                                 "Component": {
                                   "active": true
                                 },
-                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                                "idMaterial": "Material|2023-07-21T08:07:33.407Z|42136"
                               }
                             }
                           ]
@@ -974,7 +1070,7 @@
                                 "Component": {
                                   "active": true
                                 },
-                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                                "idMaterial": "Material|2023-07-21T08:07:33.407Z|42136"
                               }
                             }
                           ]
@@ -1030,7 +1126,7 @@
                                 "Component": {
                                   "active": true
                                 },
-                                "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                                "idMaterial": "Material|2023-07-21T08:07:33.407Z|42136"
                               }
                             }
                           ]
@@ -1052,7 +1148,7 @@
             "children": [
               {
                 "ƒ.Node": {
-                  "name": "shelf",
+                  "name": "register",
                   "active": true,
                   "components": {
                     "ComponentMesh": [
@@ -1098,7 +1194,7 @@
                           "Component": {
                             "active": true
                           },
-                          "idMaterial": "Material|2023-07-18T13:03:36.831Z|80772"
+                          "idMaterial": "Material|2023-07-21T08:58:58.079Z|71151"
                         }
                       }
                     ]
@@ -1367,6 +1463,66 @@
         "ƒ.CoatTextured": {
           "color": "[1, 1, 1, 1]",
           "idTexture": "TextureImage|2023-07-20T14:51:13.827Z|06525"
+        }
+      }
+    }
+  },
+  "Material|2023-07-21T08:20:17.887Z|59405": {
+    "ƒ.Material": {
+      "name": "MFloor",
+      "idResource": "Material|2023-07-21T08:20:17.887Z|59405",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]"
+        }
+      }
+    }
+  },
+  "TextureImage|2023-07-21T08:57:48.528Z|99656": {
+    "ƒ.TextureImage": {
+      "url": "graphics\\floor.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-21T08:57:48.528Z|99656",
+        "name": "TIFloor",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "TextureImage|2023-07-21T08:58:00.946Z|34604": {
+    "ƒ.TextureImage": {
+      "url": "graphics\\cashRegister.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-21T08:58:00.946Z|34604",
+        "name": "TICashRegister",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "Material|2023-07-21T08:58:20.696Z|20710": {
+    "ƒ.Material": {
+      "name": "MFloor",
+      "idResource": "Material|2023-07-21T08:58:20.696Z|20710",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-07-21T08:57:48.528Z|99656"
+        }
+      }
+    }
+  },
+  "Material|2023-07-21T08:58:58.079Z|71151": {
+    "ƒ.Material": {
+      "name": "MCashRegister",
+      "idResource": "Material|2023-07-21T08:58:58.079Z|71151",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-07-21T08:58:00.946Z|34604"
         }
       }
     }

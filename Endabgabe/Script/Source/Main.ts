@@ -15,6 +15,7 @@ namespace Script {
   let imgBanana: HTMLElement;
   let imgMilk: HTMLElement;
   let sideShelves: ƒ.Node[];
+  let cashRegister: ƒ.Node;
   
 
   document.addEventListener("interactiveViewportStarted", <EventListener>start);
@@ -33,6 +34,7 @@ namespace Script {
     imgApple = document.getElementById("apple");
     imgBanana = document.getElementById("banana");
     imgMilk = document.getElementById("milk");
+    cashRegister = viewport.getBranch().getChildrenByName("cashRegister")[0].getChildrenByName("register")[0];
     
 
 
@@ -58,6 +60,7 @@ namespace Script {
     movement();
     followCamera();
     collectGroceries();
+    CollisionCashRegister();
     
   }
 
@@ -128,6 +131,9 @@ namespace Script {
     }
     player.mtxLocal.translation = pos;
 
+    
+    
+
   }
 
   function changeAnimation(_status: string, _material: string): void {
@@ -179,13 +185,24 @@ namespace Script {
       if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5)
         return tile;
   }}
+  function CollisionCashRegister(): void{
+    let playerPosX: number = player.mtxLocal.translation.x;
+    let playerPosY: number = player.mtxLocal.translation.y;
+    let registerPosX: number = cashRegister.mtxLocal.translation.x;
+    let registerPosY: number = cashRegister.mtxLocal.translation.y;
+    if (playerPosX > registerPosX - 1 && playerPosX < registerPosX + 1 && playerPosY < registerPosY + 0.5) {
+      console.log("cash");
+    }   
+  }
 
 
     function followCamera(): void{
       let mutator: ƒ.Mutator = player.mtxLocal.getMutator();
+      if (player.mtxLocal.translation.x < 16 && player.mtxLocal.translation.x > - 2) {
       viewport.camera.mtxPivot.mutate(
         { "translation": { "x": mutator.translation.x, "y": mutator.translation.y + 1 } }
       );
+      }
     }
 
     function createCollectables(): void {

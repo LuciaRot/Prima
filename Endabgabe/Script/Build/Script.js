@@ -92,6 +92,7 @@ var Script;
     let imgBanana;
     let imgMilk;
     let sideShelves;
+    let cashRegister;
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
@@ -104,6 +105,7 @@ var Script;
         imgApple = document.getElementById("apple");
         imgBanana = document.getElementById("banana");
         imgMilk = document.getElementById("milk");
+        cashRegister = viewport.getBranch().getChildrenByName("cashRegister")[0].getChildrenByName("register")[0];
         createCollectables();
         ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
@@ -117,6 +119,7 @@ var Script;
         movement();
         followCamera();
         collectGroceries();
+        CollisionCashRegister();
     }
     function movement() {
         let timeFrame = ƒ.Loop.timeFrameGame / 1000;
@@ -221,9 +224,20 @@ var Script;
                 return tile;
         }
     }
+    function CollisionCashRegister() {
+        let playerPosX = player.mtxLocal.translation.x;
+        let playerPosY = player.mtxLocal.translation.y;
+        let registerPosX = cashRegister.mtxLocal.translation.x;
+        let registerPosY = cashRegister.mtxLocal.translation.y;
+        if (playerPosX > registerPosX - 1 && playerPosX < registerPosX + 1 && playerPosY < registerPosY + 0.5) {
+            console.log("cash");
+        }
+    }
     function followCamera() {
         let mutator = player.mtxLocal.getMutator();
-        viewport.camera.mtxPivot.mutate({ "translation": { "x": mutator.translation.x, "y": mutator.translation.y + 1 } });
+        if (player.mtxLocal.translation.x < 16 && player.mtxLocal.translation.x > -2) {
+            viewport.camera.mtxPivot.mutate({ "translation": { "x": mutator.translation.x, "y": mutator.translation.y + 1 } });
+        }
     }
     function createCollectables() {
         let apple = new Script.Collectable("apple", -1.5, 0.8);
