@@ -23,6 +23,7 @@ namespace Script {
   let animCom: ƒ.Component;
   let heartsDiv: HTMLElement;
   let grocery1: Collectable;
+  let timeUp: boolean = true;
 
 
 
@@ -84,7 +85,8 @@ namespace Script {
     collectGroceries();
     CollisionCashRegister();
     grocery1.getComponent(Grocery).move();
-
+    checkGhostie();
+    
 
 
 
@@ -289,17 +291,50 @@ namespace Script {
       }
 
     }
-
-
   }
+
+  function checkGhostie(): void {
+
+    let playerPos: ƒ.Vector3 = player.mtxLocal.translation;
+    let ghostiePos: ƒ.Vector3 = ghost.mtxLocal.translation;
+    if (playerPos.x > ghostiePos.x - 0.3 && playerPos.x < ghostiePos.x + 0.3 && playerPos.y < ghostiePos.y + 0.3 && playerPos.y > ghostiePos.y - 0.5 && timeUp == true) {
+      let element: HTMLElement = heartsDiv.getElementsByTagName("img")[0];  
+      heartsDiv.removeChild(element);
+      hearts -- ; 
+      console.log(hearts);
+      if (hearts == 0) {
+        alert("You lost :(")
+      }
+      timeUp = false;
+      window.setTimeout(function() {
+        timeUp = true;
+      }, 2000)
+      }
+    }
+
   function handlePay(_event: CustomEvent): void {
     if (groceryList.length == 0 && win == true) {
       console.log("wuhuuuu");
       addSoundRegister("win");
       win = false;
+      alert("You won!!! You are sooooo amazing!!!! WOOOOOOOOOW! I can't believe it! O.O ");
+
     }
     else {
       console.log("notyet");
+      if (timeUp == true) {
+      let element: HTMLElement = heartsDiv.getElementsByTagName("img")[0];  
+      heartsDiv.removeChild(element);
+      hearts --;
+      if (hearts == 0) {
+        alert("You lost :(")
+      }
+      timeUp = false;
+      window.setTimeout(function() {
+        timeUp = true;
+      }, 2000)
+      }
+      
     }
   }
 

@@ -100,6 +100,7 @@ var Script;
     let animCom;
     let heartsDiv;
     let grocery1;
+    let timeUp = true;
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
@@ -144,6 +145,7 @@ var Script;
         collectGroceries();
         CollisionCashRegister();
         grocery1.getComponent(Script.Grocery).move();
+        checkGhostie();
     }
     function movement() {
         let timeFrame = ƒ.Loop.timeFrameGame / 1000;
@@ -305,14 +307,44 @@ var Script;
             }
         }
     }
+    function checkGhostie() {
+        let playerPos = player.mtxLocal.translation;
+        let ghostiePos = ghost.mtxLocal.translation;
+        if (playerPos.x > ghostiePos.x - 0.3 && playerPos.x < ghostiePos.x + 0.3 && playerPos.y < ghostiePos.y + 0.3 && playerPos.y > ghostiePos.y - 0.5 && timeUp == true) {
+            let element = heartsDiv.getElementsByTagName("img")[0];
+            heartsDiv.removeChild(element);
+            hearts--;
+            console.log(hearts);
+            if (hearts == 0) {
+                alert("You lost :(");
+            }
+            timeUp = false;
+            window.setTimeout(function () {
+                timeUp = true;
+            }, 2000);
+        }
+    }
     function handlePay(_event) {
         if (groceryList.length == 0 && win == true) {
             console.log("wuhuuuu");
             addSoundRegister("win");
             win = false;
+            alert("You won!!! You are sooooo amazing!!!! WOOOOOOOOOW! I can't believe it! O.O ");
         }
         else {
             console.log("notyet");
+            if (timeUp == true) {
+                let element = heartsDiv.getElementsByTagName("img")[0];
+                heartsDiv.removeChild(element);
+                hearts--;
+                if (hearts == 0) {
+                    alert("You lost :(");
+                }
+                timeUp = false;
+                window.setTimeout(function () {
+                    timeUp = true;
+                }, 2000);
+            }
         }
     }
     function createGroceryList() {
