@@ -485,7 +485,26 @@
           "ƒ.Node": {
             "name": "collectables",
             "active": true,
-            "components": {},
+            "components": {
+              "ComponentAudioListener": [
+                {
+                  "ƒ.ComponentAudioListener": {
+                    "active": true
+                  }
+                }
+              ],
+              "ComponentAudio": [
+                {
+                  "ƒ.ComponentAudio": {
+                    "active": true,
+                    "idResource": "Audio|2023-07-21T13:15:11.686Z|77880",
+                    "playing": false,
+                    "loop": false,
+                    "volume": 1
+                  }
+                }
+              ]
+            },
             "children": []
           }
         },
@@ -1662,6 +1681,14 @@
       "url": "audio\\mixkit-gimme-that-groove-872.mp3",
       "idResource": "Audio|2023-07-21T12:58:57.731Z|38314",
       "name": "audio\\mixkit-gimme-that-groove-872.mp3",
+      "type": "Audio"
+    }
+  },
+  "Audio|2023-07-21T13:15:11.686Z|77880": {
+    "ƒ.Audio": {
+      "url": "audio\\mixkit-long-pop-2358.wav",
+      "idResource": "Audio|2023-07-21T13:15:11.686Z|77880",
+      "name": "pop",
       "type": "Audio"
     }
   }

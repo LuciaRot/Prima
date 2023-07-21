@@ -93,6 +93,7 @@ var Script;
     let groceries = ["apple", "banana", "milk"];
     let groceryList = [];
     let img = [];
+    let sound;
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
@@ -235,7 +236,6 @@ var Script;
     }
     function followCamera() {
         let mutator = player.mtxLocal.getMutator();
-        viewport.camera.mtxPivot.mutate({ "translation.y": { "y": mutator.translation.y + 1 } });
         if (player.mtxLocal.translation.x < 16 && player.mtxLocal.translation.x > -2) {
             viewport.camera.mtxPivot.mutate({ "translation": { "x": mutator.translation.x, "y": mutator.translation.y + 1 } });
         }
@@ -269,6 +269,7 @@ var Script;
                 let img = document.getElementById(name);
                 divGroceries.removeChild(img);
                 checkGrocery(name);
+                addSound();
             }
         }
     }
@@ -300,6 +301,13 @@ var Script;
         let audioListener = viewport.getBranch().getComponent(ƒ.ComponentAudioListener);
         ƒ.AudioManager.default.listenWith(audioListener);
         ƒ.AudioManager.default.listenTo(viewport.getBranch());
+    }
+    function addSound() {
+        let audio = collectables.getComponent(ƒ.ComponentAudio);
+        sound = ƒ.Project.getResourcesByName("pop")[0];
+        console.log(sound);
+        //audio.setAudio(sound);
+        audio.play(true);
     }
 })(Script || (Script = {}));
 //# sourceMappingURL=Script.js.map

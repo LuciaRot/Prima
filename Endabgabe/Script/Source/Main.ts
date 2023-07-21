@@ -16,6 +16,7 @@ namespace Script {
   let groceries: string[] = ["apple", "banana", "milk"];
   let groceryList: string[] = [];
   let img: HTMLElement[] = [];
+  let sound: ƒ.Audio;
 
 
   document.addEventListener("interactiveViewportStarted", <EventListener>start);
@@ -78,6 +79,7 @@ namespace Script {
     if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D]) && player.mtxLocal.translation.x < 18.4) {
       player.mtxLocal.translateX(2 * timeFrame);
       changeAnimation("ASCharacterRunRight", "MCharacterRunRight");
+      
     }
     else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D])) {
       changeAnimation("ASCharacterRunRight", "MCharacterRunRight");
@@ -208,9 +210,6 @@ namespace Script {
   function followCamera(): void {
     let mutator: ƒ.Mutator = player.mtxLocal.getMutator();
 
-    viewport.camera.mtxPivot.mutate(
-      { "translation.y": { "y": mutator.translation.y + 1 } }
-    );
     if (player.mtxLocal.translation.x < 16 && player.mtxLocal.translation.x > - 2) {
       viewport.camera.mtxPivot.mutate(
         { "translation": { "x": mutator.translation.x, "y": mutator.translation.y + 1 } }
@@ -257,6 +256,7 @@ namespace Script {
         let img: HTMLElement = document.getElementById(name);
         divGroceries.removeChild(img);
         checkGrocery(name);
+        addSound();
       }
 
     }
@@ -298,5 +298,12 @@ namespace Script {
     ƒ.AudioManager.default.listenTo(viewport.getBranch());
   
   }
+ function addSound(): void {
+  let audio: ƒ.ComponentAudio = collectables.getComponent(ƒ.ComponentAudio);
+  sound = ƒ.Project.getResourcesByName("pop")[0] as ƒ.Audio;
+  console.log(sound);
+  //audio.setAudio(sound);
+  audio.play(true);
+ }
 
 }
