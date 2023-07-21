@@ -14,7 +14,7 @@ This game is a little jump and run where you have to collect the groceries on yo
 
 ## Links
 * [Link to Repository:](https://github.com/LuciaRot/Prima/tree/main/Endabgabe)
-* [Link to Game:](https://celinet00.github.io/PRIMA/DDTT/)
+* [Link to Game:](https://luciarot.github.io/Prima/Endabgabe/index.html)
 * [Link to Design Document:](https://github.com/LuciaRot/Prima/tree/main/Endabgabe/designDoc.pdf)
 
 ## Criteria
