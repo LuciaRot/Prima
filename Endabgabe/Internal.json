@@ -241,6 +241,54 @@
       }
     }
   },
+  "Material|2023-07-21T08:58:20.696Z|20710": {
+    "ƒ.Material": {
+      "name": "MFloor",
+      "idResource": "Material|2023-07-21T08:58:20.696Z|20710",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-07-21T08:57:48.528Z|99656"
+        }
+      }
+    }
+  },
+  "TextureImage|2023-07-21T08:57:48.528Z|99656": {
+    "ƒ.TextureImage": {
+      "url": "graphics\\floor.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-21T08:57:48.528Z|99656",
+        "name": "TIFloor",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "Material|2023-07-21T08:58:58.079Z|71151": {
+    "ƒ.Material": {
+      "name": "MCashRegister",
+      "idResource": "Material|2023-07-21T08:58:58.079Z|71151",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-07-21T08:58:00.946Z|34604"
+        }
+      }
+    }
+  },
+  "TextureImage|2023-07-21T08:58:00.946Z|34604": {
+    "ƒ.TextureImage": {
+      "url": "graphics\\cashRegister.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-21T08:58:00.946Z|34604",
+        "name": "TICashRegister",
+        "mipmap": "CRISP"
+      }
+    }
+  },
   "Graph|2023-07-14T12:59:02.401Z|80427": {
     "ƒ.Graph": {
       "name": "NewGraph",
@@ -1475,54 +1523,6 @@
       "coat": {
         "ƒ.CoatTextured": {
           "color": "[1, 1, 1, 1]"
-        }
-      }
-    }
-  },
-  "TextureImage|2023-07-21T08:57:48.528Z|99656": {
-    "ƒ.TextureImage": {
-      "url": "graphics\\floor.png",
-      "type": "TextureImage",
-      "Texture": {
-        "idResource": "TextureImage|2023-07-21T08:57:48.528Z|99656",
-        "name": "TIFloor",
-        "mipmap": "CRISP"
-      }
-    }
-  },
-  "TextureImage|2023-07-21T08:58:00.946Z|34604": {
-    "ƒ.TextureImage": {
-      "url": "graphics\\cashRegister.png",
-      "type": "TextureImage",
-      "Texture": {
-        "idResource": "TextureImage|2023-07-21T08:58:00.946Z|34604",
-        "name": "TICashRegister",
-        "mipmap": "CRISP"
-      }
-    }
-  },
-  "Material|2023-07-21T08:58:20.696Z|20710": {
-    "ƒ.Material": {
-      "name": "MFloor",
-      "idResource": "Material|2023-07-21T08:58:20.696Z|20710",
-      "shader": "ShaderLitTextured",
-      "coat": {
-        "ƒ.CoatTextured": {
-          "color": "[1, 1, 1, 1]",
-          "idTexture": "TextureImage|2023-07-21T08:57:48.528Z|99656"
-        }
-      }
-    }
-  },
-  "Material|2023-07-21T08:58:58.079Z|71151": {
-    "ƒ.Material": {
-      "name": "MCashRegister",
-      "idResource": "Material|2023-07-21T08:58:58.079Z|71151",
-      "shader": "ShaderLitTextured",
-      "coat": {
-        "ƒ.CoatTextured": {
-          "color": "[1, 1, 1, 1]",
-          "idTexture": "TextureImage|2023-07-21T08:58:00.946Z|34604"
         }
       }
     }

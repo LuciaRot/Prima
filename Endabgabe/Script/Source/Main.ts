@@ -17,6 +17,8 @@ namespace Script {
   let sideShelves: ƒ.Node[];
   let cashRegister: ƒ.Node;
   let payEvent: CustomEvent = new CustomEvent("pay", {bubbles: true});
+  let groceries: string[] = ["apple", "banana", "milk"];
+  let groceryList: string[] = [];
   
 
   document.addEventListener("interactiveViewportStarted", <EventListener>start);
@@ -36,10 +38,12 @@ namespace Script {
     imgBanana = document.getElementById("banana");
     imgMilk = document.getElementById("milk");
     cashRegister = viewport.getBranch().getChildrenByName("cashRegister")[0].getChildrenByName("register")[0];
+  
     
     
-
+    createGroceryList();
     createCollectables();
+    
     
     
     
@@ -63,6 +67,7 @@ namespace Script {
     followCamera();
     collectGroceries();
     CollisionCashRegister();
+    
 
    
     
@@ -210,13 +215,13 @@ namespace Script {
     }
 
     function createCollectables(): void {
-      let apple : Collectable = new Collectable("apple", -1.5, 0.8);
+      let apple : Collectable = new Collectable(groceryList[0], -1.5, 0.8);
       collectables.addChild(apple);
 
-      let banana: Collectable = new Collectable("banana", 7, 2.6);
+      let banana: Collectable = new Collectable(groceryList[1], 7, 2.6);
       collectables.addChild(banana);
     
-      let milk: Collectable = new Collectable("milk", 14, 1.9);
+      let milk: Collectable = new Collectable(groceryList[2], 14, 1.9);
       collectables.addChild(milk);
     }
 
@@ -251,6 +256,15 @@ namespace Script {
     }
     function handlePay(_event: CustomEvent): void {
       console.log("payed");
+    }
+
+    function createGroceryList(): void {
+      for (let i:number = 0; i<3; i++) {
+        let n: number = Math.floor(Math.random() * 3); 
+       
+        groceryList.push(groceries[n]);
+        console.log(groceryList);
+      }
     }
   
 }

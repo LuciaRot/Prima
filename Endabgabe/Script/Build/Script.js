@@ -94,6 +94,8 @@ var Script;
     let sideShelves;
     let cashRegister;
     let payEvent = new CustomEvent("pay", { bubbles: true });
+    let groceries = ["apple", "banana", "milk"];
+    let groceryList = [];
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
@@ -107,6 +109,7 @@ var Script;
         imgBanana = document.getElementById("banana");
         imgMilk = document.getElementById("milk");
         cashRegister = viewport.getBranch().getChildrenByName("cashRegister")[0].getChildrenByName("register")[0];
+        createGroceryList();
         createCollectables();
         ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
@@ -242,11 +245,11 @@ var Script;
         }
     }
     function createCollectables() {
-        let apple = new Script.Collectable("apple", -1.5, 0.8);
+        let apple = new Script.Collectable(groceryList[0], -1.5, 0.8);
         collectables.addChild(apple);
-        let banana = new Script.Collectable("banana", 7, 2.6);
+        let banana = new Script.Collectable(groceryList[1], 7, 2.6);
         collectables.addChild(banana);
-        let milk = new Script.Collectable("milk", 14, 1.9);
+        let milk = new Script.Collectable(groceryList[2], 14, 1.9);
         collectables.addChild(milk);
     }
     function collectGroceries() {
@@ -276,6 +279,13 @@ var Script;
     }
     function handlePay(_event) {
         console.log("payed");
+    }
+    function createGroceryList() {
+        for (let i = 0; i < 3; i++) {
+            let n = Math.floor(Math.random() * 3);
+            groceryList.push(groceries[n]);
+            console.log(groceryList);
+        }
     }
 })(Script || (Script = {}));
 //# sourceMappingURL=Script.js.map
