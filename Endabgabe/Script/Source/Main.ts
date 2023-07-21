@@ -16,6 +16,7 @@ namespace Script {
   let imgMilk: HTMLElement;
   let sideShelves: ƒ.Node[];
   let cashRegister: ƒ.Node;
+  let payEvent: CustomEvent = new CustomEvent("pay", {bubbles: true});
   
 
   document.addEventListener("interactiveViewportStarted", <EventListener>start);
@@ -36,7 +37,7 @@ namespace Script {
     imgMilk = document.getElementById("milk");
     cashRegister = viewport.getBranch().getChildrenByName("cashRegister")[0].getChildrenByName("register")[0];
     
-
+    
 
     createCollectables();
     
@@ -48,6 +49,7 @@ namespace Script {
    
     /* console.log(collectables); */
     /* console.log(apple.textureApple, apple.textureBanana, apple.textureMilk); */
+    cashRegister.addEventListener("pay", handlePay);
 
   }
 
@@ -61,6 +63,8 @@ namespace Script {
     followCamera();
     collectGroceries();
     CollisionCashRegister();
+
+   
     
   }
 
@@ -191,7 +195,7 @@ namespace Script {
     let registerPosX: number = cashRegister.mtxLocal.translation.x;
     let registerPosY: number = cashRegister.mtxLocal.translation.y;
     if (playerPosX > registerPosX - 1 && playerPosX < registerPosX + 1 && playerPosY < registerPosY + 0.5) {
-      console.log("cash");
+      cashRegister.dispatchEvent(payEvent);
     }   
   }
 
@@ -242,6 +246,11 @@ namespace Script {
         }
 
       }
+
+      
+    }
+    function handlePay(_event: CustomEvent): void {
+      console.log("payed");
     }
   
 }

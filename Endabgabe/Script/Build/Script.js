@@ -93,6 +93,7 @@ var Script;
     let imgMilk;
     let sideShelves;
     let cashRegister;
+    let payEvent = new CustomEvent("pay", { bubbles: true });
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
@@ -111,6 +112,7 @@ var Script;
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
         /* console.log(collectables); */
         /* console.log(apple.textureApple, apple.textureBanana, apple.textureMilk); */
+        cashRegister.addEventListener("pay", handlePay);
     }
     function update(_event) {
         // ƒ.Physics.simulate();  // if physics is included and used
@@ -230,7 +232,7 @@ var Script;
         let registerPosX = cashRegister.mtxLocal.translation.x;
         let registerPosY = cashRegister.mtxLocal.translation.y;
         if (playerPosX > registerPosX - 1 && playerPosX < registerPosX + 1 && playerPosY < registerPosY + 0.5) {
-            console.log("cash");
+            cashRegister.dispatchEvent(payEvent);
         }
     }
     function followCamera() {
@@ -271,6 +273,9 @@ var Script;
                 divGroceries.removeChild(img);
             }
         }
+    }
+    function handlePay(_event) {
+        console.log("payed");
     }
 })(Script || (Script = {}));
 //# sourceMappingURL=Script.js.map
