@@ -22,6 +22,7 @@ namespace Script {
   let ghost: ƒ.Node;
   let animCom: ƒ.Component;
   let heartsDiv: HTMLElement;
+  let grocery1: Collectable;
 
 
 
@@ -53,6 +54,7 @@ namespace Script {
     createGroceryList();
     createCollectables();
     addAudio();
+    //console.log(collectables);
     
     /* animateGhost();
  */
@@ -80,6 +82,7 @@ namespace Script {
     followCamera();
     collectGroceries();
     CollisionCashRegister();
+    grocery1.getComponent(Grocery).move();
 
 
 
@@ -235,8 +238,10 @@ namespace Script {
   }
 
   function createCollectables(): void {
-    let grocery1: Collectable = new Collectable(groceryList[0], -1.5, 0.8);
+    grocery1 = new Collectable(groceryList[0], -1.5, 0.8);
     collectables.addChild(grocery1);
+    grocery1.addComponent(new Grocery());
+    grocery1.getComponent(Grocery).setOrigin(grocery1);
 
 
     let grocery2: Collectable = new Collectable(groceryList[1], 7, 2.6);

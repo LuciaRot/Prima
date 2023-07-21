@@ -22,3 +22,16 @@ declare namespace Script {
 }
 declare namespace Script {
 }
+declare namespace Script {
+    import ƒ = FudgeCore;
+    class Grocery extends ƒ.ComponentScript {
+        static readonly iSubclass: number;
+        isGoingUp: boolean;
+        pos: number;
+        originNode: ƒ.Node;
+        constructor();
+        hndEvent: (_event: Event) => void;
+        move(): void;
+        setOrigin(_node: ƒ.Node): void;
+    }
+}

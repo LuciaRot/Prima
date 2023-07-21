@@ -326,6 +326,17 @@
       }
     }
   },
+  "TextureImage|2023-07-21T16:45:14.654Z|16647": {
+    "ƒ.TextureImage": {
+      "url": "enemies\\Ghosty_Blush-Sheet (2).png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-21T16:45:14.654Z|16647",
+        "name": "enemies\\Ghosty_Blush-Sheet (2).png",
+        "mipmap": "CRISP"
+      }
+    }
+  },
   "TextureImage|2023-07-21T16:13:59.114Z|27173": {
     "ƒ.TextureImage": {
       "url": "enemies\\Walk.png",
@@ -355,6 +366,16 @@
         "framesPerSecond": 5,
         "animationStructure": {}
       }
+    }
+  },
+  "Animation|2023-07-21T16:56:39.243Z|67768": {
+    "ƒ.Animation": {
+      "idResource": "Animation|2023-07-21T16:56:39.243Z|67768",
+      "name": "Animation",
+      "labels": {},
+      "events": {},
+      "framesPerSecond": 60,
+      "animationStructure": {}
     }
   },
   "Graph|2023-07-14T12:59:02.401Z|80427": {
@@ -1849,27 +1870,6 @@
       "idResource": "Audio|2023-07-21T13:36:22.469Z|66061",
       "name": "audio\\step.wav",
       "type": "Audio"
-    }
-  },
-  "TextureImage|2023-07-21T16:45:14.654Z|16647": {
-    "ƒ.TextureImage": {
-      "url": "enemies\\Ghosty_Blush-Sheet (2).png",
-      "type": "TextureImage",
-      "Texture": {
-        "idResource": "TextureImage|2023-07-21T16:45:14.654Z|16647",
-        "name": "enemies\\Ghosty_Blush-Sheet (2).png",
-        "mipmap": "CRISP"
-      }
-    }
-  },
-  "Animation|2023-07-21T16:56:39.243Z|67768": {
-    "ƒ.Animation": {
-      "idResource": "Animation|2023-07-21T16:56:39.243Z|67768",
-      "name": "Animation",
-      "labels": {},
-      "events": {},
-      "framesPerSecond": 60,
-      "animationStructure": {}
     }
   }
 }

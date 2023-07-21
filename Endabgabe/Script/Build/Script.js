@@ -99,6 +99,7 @@ var Script;
     let ghost;
     let animCom;
     let heartsDiv;
+    let grocery1;
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
@@ -119,6 +120,7 @@ var Script;
         createGroceryList();
         createCollectables();
         addAudio();
+        //console.log(collectables);
         /* animateGhost();
      */
         ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
@@ -133,6 +135,7 @@ var Script;
         followCamera();
         collectGroceries();
         CollisionCashRegister();
+        grocery1.getComponent(Script.Grocery).move();
     }
     function movement() {
         let timeFrame = ƒ.Loop.timeFrameGame / 1000;
@@ -253,8 +256,10 @@ var Script;
         }
     }
     function createCollectables() {
-        let grocery1 = new Script.Collectable(groceryList[0], -1.5, 0.8);
+        grocery1 = new Script.Collectable(groceryList[0], -1.5, 0.8);
         collectables.addChild(grocery1);
+        grocery1.addComponent(new Script.Grocery());
+        grocery1.getComponent(Script.Grocery).setOrigin(grocery1);
         let grocery2 = new Script.Collectable(groceryList[1], 7, 2.6);
         collectables.addChild(grocery2);
         let grocery3 = new Script.Collectable(groceryList[2], 14, 1.9);
@@ -374,5 +379,62 @@ var Script;
       ghost.addComponent(cmpAnimator);
   
     } */
+})(Script || (Script = {}));
+var Script;
+(function (Script) {
+    var ƒ = FudgeCore;
+    ƒ.Project.registerScriptNamespace(Script); // Register the namespace to FUDGE for serialization
+    let instance;
+    class Grocery extends ƒ.ComponentScript {
+        constructor() {
+            super();
+            this.isGoingUp = true;
+            this.hndEvent = (_event) => {
+                switch (_event.type) {
+                    case "componentAdd" /* COMPONENT_ADD */:
+                        // ƒ.Debug.log(this.message, this.node);
+                        break;
+                    case "componentRemove" /* COMPONENT_REMOVE */:
+                        this.removeEventListener("componentAdd" /* COMPONENT_ADD */, this.hndEvent);
+                        this.removeEventListener("componentRemove" /* COMPONENT_REMOVE */, this.hndEvent);
+                        break;
+                    case "nodeDeserialized" /* NODE_DESERIALIZED */:
+                        // if deserialized the node is now fully reconstructed and access to all its components and children is possible
+                        break;
+                }
+            };
+            // Don't start when running in editor
+            if (ƒ.Project.mode == ƒ.MODE.EDITOR)
+                return;
+            instance = this;
+            // Listen to this component being added to or removed from a node
+            this.addEventListener("componentAdd" /* COMPONENT_ADD */, this.hndEvent);
+            this.addEventListener("componentRemove" /* COMPONENT_REMOVE */, this.hndEvent);
+            this.addEventListener("nodeDeserialized" /* NODE_DESERIALIZED */, this.hndEvent);
+        }
+        move() {
+            if (this.originNode.mtxLocal.translation.y > this.pos + 0.2) {
+                this.isGoingUp = false;
+            }
+            else if (this.originNode.mtxLocal.translation.y < this.pos) {
+                this.isGoingUp = true;
+            }
+            if (this.isGoingUp == true) {
+                this.originNode.mtxLocal.translateY(0.01);
+            }
+            else {
+                this.originNode.mtxLocal.translateY(-0.01);
+            }
+            //console.log(instance.pos);
+        }
+        setOrigin(_node) {
+            console.log(_node.mtxLocal.translation.y);
+            this.originNode = _node;
+            this.pos = _node.mtxLocal.translation.y;
+        }
+    }
+    // Register the script as component for use in the editor via drag&drop
+    Grocery.iSubclass = ƒ.Component.registerSubclass(Grocery);
+    Script.Grocery = Grocery;
 })(Script || (Script = {}));
 //# sourceMappingURL=Script.js.map
