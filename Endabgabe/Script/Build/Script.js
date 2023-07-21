@@ -119,6 +119,14 @@ var Script;
         ghost.addComponent(new Script.Ghost());
         ghost.getComponent(Script.Ghost).setOrigin(ghost);
         ghost.getComponent(Script.Ghost).transit(Script.STATUS.WALK);
+        window.setInterval(function () {
+            if (ghost.getComponent(Script.Ghost).stateCurrent == Script.STATUS.WALK) {
+                ghost.getComponent(Script.Ghost).transit(Script.STATUS.STAND);
+            }
+            else if (ghost.getComponent(Script.Ghost).stateCurrent == Script.STATUS.STAND) {
+                ghost.getComponent(Script.Ghost).transit(Script.STATUS.WALK);
+            }
+        }, 5000);
         fetchJson();
         createGroceryList();
         createCollectables();

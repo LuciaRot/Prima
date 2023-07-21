@@ -51,7 +51,14 @@ namespace Script {
     ghost.addComponent(new Ghost());
     ghost.getComponent(Ghost).setOrigin(ghost);
     ghost.getComponent(Ghost).transit(STATUS.WALK);
-
+    window.setInterval(function () {
+      if (ghost.getComponent(Ghost).stateCurrent == STATUS.WALK) {
+        ghost.getComponent(Ghost).transit(STATUS.STAND);
+      }
+      else if (ghost.getComponent(Ghost).stateCurrent == STATUS.STAND) {
+        ghost.getComponent(Ghost).transit(STATUS.WALK);
+      }
+    }, 5000)
 
 
     fetchJson();
@@ -348,5 +355,5 @@ namespace Script {
     createHearts();
   }
 
-  
- }
+
+}

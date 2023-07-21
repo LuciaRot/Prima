@@ -49,7 +49,7 @@ namespace Script {
         }
 
         private static actStand(): void {
-
+            
         }
 
         public static get(): ƒAid.StateMachineInstructions<STATUS> {
