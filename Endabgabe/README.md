@@ -1,74 +1,37 @@
-# Prima
-Repository for the module "Prototyping interactive media-applications and games" at Furtwangen University
+# Go shopping
 
-[Pages-Version](https://jirkadelloro.github.io/Prima/)
+## Informationen
+* Title: Go shopping
+* Author: Lucia Rothweiler 
+* Sommersemester 2023
+* MKB7
+* Course: Prototyping Interaktiver Medien-Apps und Games
+* Docent: Prof. Jirka Dell´Oro-Friedl
 
-In this course, students learn fundamentals of game engines and development environments for prototyping. They learn basic development patterns used in highly interactive applications such as animation, transformation, object relationships and event control. We analyse concepts for complex applications or simple games, plan the realisation of core features and create executable prototypes for demonstration. In the end, students design their own piece of art and produce it themselves.
-
-The environment we work with is [FUDGE](https://jirkadelloro.github.io/FUDGE), the Furtwangen University Didactic Game Engine/Editor, which allows for optimized tuition and collaboration, while demonstrating the fundamentals of popular engines like Unreal or Unity. Students acquainted to FUDGE can easily shift over to these mighty tools later on. Coding language is [TypeScript](https://typescriptlang.org)
-
-## Examples
-This is **experimental** material created by the docents during the PRIMA-lectures while explaining some core functionalities the course was working on. Usually, we examine one 2d and one 3d application. **These are not fully functional and self explaining prototypes**. 
-
-| Semester | 2D                                                                                             | 3D                                                                                       |
-|---------:|------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-|      W22 | [Mario](https://jirkadelloro.github.io/Prima/W22/Mario)                                      | [Starfox](https://jirkadelloro.github.io/Prima/W22/Starfox)                        |
-|      S22 | [Pacman](https://jirkadelloro.github.io/Prima/S22/Pacman)                                      | [Slenderman](https://jirkadelloro.github.io/Prima/S22/Slenderman)                        |
-|      W21 | [LaserLeague](https://jirkadelloro.github.io/Prima/W21/LaserLeague)                            | [MarkusCart](https://jirkadelloro.github.io/Prima/W21/MarkusCart)                        |
-|      S21 | [SpaceInvaders](https://jirkadelloro.github.io/Prima/S21/L02_SpaceInvaders/SpaceInvaders.html) | [PhysicsGame](https://jirkadelloro.github.io/Prima/S21/L05_PhysicsGame/PhysicsGame.html) |
-|      W20 | [BreakOut](https://jirkadelloro.github.io/Prima/W20/L07_BreakOut_Final/Main.html)              | [Doom](https://jirkadelloro.github.io/Prima/W20/L13_Doom_UI/Main.html)                   |
-|      S20 | [Snake](https://jirkadelloro.github.io/Prima/S20/L08_Snake3D_Enemy/Main.html)                  | [TowerDefense](https://jirkadelloro.github.io/Prima/S20/L11_TowerDefenseFire/Main.html)  |
-|      W19 | [Pong](https://jirkadelloro.github.io/Prima/W19/L06_PongFinal/Main.html)                       | [Craftris (3D-Tetris)](https://jirkadelloro.github.io/Prima/W19/L13_Craftris)            |
+## Interaction 
+This game is a little jump and run where you have to collect the groceries on your list. The controls are "w" and "d" to move and "space" to jump. When you have collected all the groceries, bring them to the cash register at the end.
 
 
-## Checklist for the final assignment
-© Prof. Dipl.-Ing. Jirka R. Dell'Oro-Friedl, HFU
+## Links
+* [Link to Repository:](https://github.com/LuciaRot/Prima/tree/main/Endabgabe)
+* [Link to Game:](https://luciarot.github.io/Prima/Endabgabe/index.html)
+* [Link to Design Document:](https://github.com/LuciaRot/Prima/tree/main/Endabgabe/designDoc.pdf)
+
+## Criteria
+
 | Nr | Criterion           | Explanation                                                                                                                                     |
 |---:|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-|  1 | Units and Positions | Where is 0, what is 1? Explain your setup of coordinate systems of the entities.                                                                |
-|  2 | Hierarchy           | Explain the setup of the graphs and the advantages you gain by it.                                                                              |
-|  3 | Editor              | Use the visual editor and explain which parts are better done by coding and why.                                                                |
-|  4 | Scriptcomponents    | Use scriptcomponents and explain if they were useful in your context or not and why.                                                            |
-|  5 | Extend              | Derive classes from FudgeCore other than ScriptComponent and explain if that was useful in your context or not and why.                         |
-|  6 | Sound               | Use sounds and explain your choice of sounds and placement in respect to the user's perception.                                                 |
-|  7 | VUI                 | Create a virtual user interface using the interface controller and mutables. Explain the interface.                                             |
-|  8 | Event-System        | Use custom events to send information that propagates along the graphs hierarchy and explain if that was useful in your context or not and why. |
-|  9 | External Data       | Create a configuration file your application loads and adjusts to the content. Explain your choice of parameters.                               |
-|  A | Light               | If light is required, explain your choice of lights in your graphs (1)                                                                          |
-|  B | Physics             | Add rigidbody components and work with collisions (1) and/or forces and torques (1) and/or joints (1)                                           |
-|  C | Net                 | Add multiplayer functionality via network (3)                                                                                                   |
-|  D | State Machines      | Create autonomous entities using the StateMachine (1) and/or ComponentStateMachine (1) defined in FudgeAid                                      |
-|  E | Animation           | Animate using the animation system of FudgeCore (1) and/or Sprites (1) as defined in FudgeAid                                                   |
-
-The criteria 1 to 9 are mandatory and yield 1 point each. Choose from A to E for additional points as noted in brackets. One aspect of your application may not fullfill multiple criteria. The final grade may deviate up to one grade from the calculation to reflect excellent aspects or flaws of your work.   
-| Points | 10  | 11  | 12  | 13  |
-|--------|-----|-----|-----|-----|
-| Grade  | 4.0 | 3.0 | 2.0 | 1.0 |
-
-## Format 
-- Include the runtime files of FUDGE used in your repository so they don't outdate.
-- Bundle the design documentation in a single well formatted PDF-file.
-- Create a README.md file in your PRIMA-Repository on Github including the following
-  * Title
-  * Author
-  * Year and season (Summer, Winter)
-  * Curriculum and semester
-  * Course this development was created in (PRIMA) 
-  * Docent
-  - Link to the finished and executable application on Github-Pages
-  - Link to the source code
-  - Link to the design document
-  - Description for users on how to interact
-  - Description on how to install, if applicable (additional services, database etc.) 
-  - A copy of the catalogue of criteria above, the right column replaced with very brief explanations and descriptions of the fullfullments of these criteria
-
-### GameZone
-If you'd like to see youra application in the exhibition "GameZone", add the following
-- Two screenshots of the running application of the sizes
-  - 250 x 100 pixel
-  - 1920 x 400 pixel 
-* Genre, if applicable
-* Tags
-* Subtitel (max 40 characters), to encourage to start the application
-* Short instructions (max 250 characters) on how to play
-* A declaration of consent with the display of the application in the GameZone with an explicit reference to the author.
+|  1 | Units and Positions |The character starts at x = 0, y = 0. It is 1 unit high and wide. the pivot point of the character is lowered by 0.5 to be able to stand  properly.                                                             |
+|  2 | Hierarchy           | The nodes all hang onto a graph called Game, which also holds the ComponentCamera. <br><b>Game:</b><ul><li>character</li><li>floor</li><li>collectables</li><li>shelves</li><li>cashRegister</li><li>backgrounds</li></ul>                                                               |
+|  3 | Editor              | I used the Editor to create the Level. The collectables are created in the code, because the order can be changed.                                                           |
+|  4 | Scriptcomponents    | I used CustomComponentScript for the different Opponents. If I wanted to make more opponents of 1 type i could to that easier with those.                                                          |
+|  5 | Extend              | I used a class for the collectables to make it easier to spawn the collectables in the level.                       |
+|  6 | Sound               | I used background music on the level, aswell as "pop" sounds on the collectables, when they are collected. There is also a sound when the player completes the game successfully.                                            |
+|  7 | VUI                 |The VUI consists of a grocery list, that tells the player which groceries they still need to collect. It updates based on the groceries the player collects.                                       |
+|  8 | Event-System        |I created a custum event for the "checkout" at the end of the game. When the player brings the groceries to the cash register this event triggers.|
+|  9 | External Data       | The config.json sets the hearts and the points of the player.      Create a configuration file your application loads and adjusts to the content. Explain your choice of parameters.                 |
+|  A | Light               | There is an Ambient Light and all the Textures have a ShaderLitTexture.        If light is required, explain your choice of lights in your graphs (1)                                                               |
+|  B | Physics             | With the RigidBody the collision of the opponent and the player is detected. The  pink Opponent is moved with Physics.       Add rigidbody components and work with collisions (1) and/or forces and torques (1) and/or joints (1)                                 |
+|  C | Net                 | ---                                                                                               |
+|  D | State Machines      | The black Opponent has 2 states. 1 is Idle and if the Player is near it, it goes into its Attack state.          Create autonomous entities using the StateMachine (1) and/or ComponentStateMachine (1) defined in FudgeAid                         |
+|  E | Animation           | I used Spritesheets for the Player and the opponents.       Animate using the animation system of FudgeCore (1) and/or Sprites (1) as defined in FudgeAid   
