@@ -8,13 +8,6 @@
 * Course: Prototyping Interaktiver Medien-Apps und Games
 * Docent: Prof. Jirka Dell´Oro-Friedl
 
-* ## Links
-[Application](#information)
-
-[Source Code](#concept)
-
-[Design Document](#links)
-
 ## Interaction 
 This game is a little jump and run where you have to collect the groceries on your list. The controls are "w" and "d" to move and "space" to jump. When you have collected all the groceries, bring them to the cash register at the end.
 
