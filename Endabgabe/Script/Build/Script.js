@@ -88,14 +88,11 @@ var Script;
     const gravity = -9.81;
     let collectables;
     let divGroceries;
-    let imgApple;
-    let imgBanana;
-    let imgMilk;
-    let sideShelves;
     let cashRegister;
     let payEvent = new CustomEvent("pay", { bubbles: true });
     let groceries = ["apple", "banana", "milk"];
     let groceryList = [];
+    let img = [];
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
@@ -105,9 +102,6 @@ var Script;
         player = viewport.getBranch().getChildrenByName("character")[0];
         collectables = viewport.getBranch().getChildrenByName("collectables")[0];
         divGroceries = document.getElementById("shoppinglist");
-        imgApple = document.getElementById("apple");
-        imgBanana = document.getElementById("banana");
-        imgMilk = document.getElementById("milk");
         cashRegister = viewport.getBranch().getChildrenByName("cashRegister")[0].getChildrenByName("register")[0];
         createGroceryList();
         createCollectables();
@@ -240,51 +234,65 @@ var Script;
     }
     function followCamera() {
         let mutator = player.mtxLocal.getMutator();
+        viewport.camera.mtxPivot.mutate({ "translation.y": { "y": mutator.translation.y + 1 } });
         if (player.mtxLocal.translation.x < 16 && player.mtxLocal.translation.x > -2) {
             viewport.camera.mtxPivot.mutate({ "translation": { "x": mutator.translation.x, "y": mutator.translation.y + 1 } });
         }
     }
     function createCollectables() {
-        let apple = new Script.Collectable(groceryList[0], -1.5, 0.8);
-        collectables.addChild(apple);
-        let banana = new Script.Collectable(groceryList[1], 7, 2.6);
-        collectables.addChild(banana);
-        let milk = new Script.Collectable(groceryList[2], 14, 1.9);
-        collectables.addChild(milk);
+        let grocery1 = new Script.Collectable(groceryList[0], -1.5, 0.8);
+        collectables.addChild(grocery1);
+        let grocery2 = new Script.Collectable(groceryList[1], 7, 2.6);
+        collectables.addChild(grocery2);
+        let grocery3 = new Script.Collectable(groceryList[2], 14, 1.9);
+        collectables.addChild(grocery3);
+        //--create shopping list in div--
+        for (let i = 0; i < groceryList.length; i++) {
+            let createImg = document.createElement("img");
+            createImg.src = "http://127.0.0.1:5500/Endabgabe/collectables/" + groceryList[i] + ".png";
+            createImg.id = groceryList[i];
+            divGroceries.appendChild(createImg);
+            img.push(createImg);
+        }
     }
     function collectGroceries() {
         let groceries = collectables.getChildren();
         let playerPos = player.mtxLocal.translation;
         let groceryPos;
         let name;
-        let img;
         for (let grocery of groceries) {
             groceryPos = grocery.mtxLocal.translation;
             name = grocery.name;
-            if (name == "apple") {
-                img = imgApple;
-            }
-            else if (name == "banana") {
-                img = imgBanana;
-            }
-            else if (name == "milk") {
-                img = imgMilk;
-            }
-            if (playerPos.x > groceryPos.x - 0.5 && playerPos.x < groceryPos.x + 0.5 && playerPos.y < groceryPos.y + 0.5 && playerPos.y > groceryPos.y - 0.5) {
+            if (playerPos.x > groceryPos.x - 0.3 && playerPos.x < groceryPos.x + 0.3 && playerPos.y < groceryPos.y + 0.3 && playerPos.y > groceryPos.y - 0.5) {
                 collectables.removeChild(grocery);
-                console.log(name);
+                let img = document.getElementById(name);
                 divGroceries.removeChild(img);
+                checkGrocery(name);
             }
         }
     }
     function handlePay(_event) {
-        console.log("payed");
+        if (groceryList.length == 0) {
+            console.log("wuhuuuu");
+        }
+        else {
+            console.log("notyet");
+        }
     }
     function createGroceryList() {
         for (let i = 0; i < 3; i++) {
             let n = Math.floor(Math.random() * 3);
             groceryList.push(groceries[n]);
             console.log(groceryList);
+        }
+    }
+    function checkGrocery(_grocery) {
+        let grocery = _grocery;
+        for (let i = 0; i < groceryList.length; i++) {
+            if (grocery = groceryList[i])
+                groceryList.splice(i, 1);
+            console.log(groceryList);
+            break;
         }
     }
 })(Script || (Script = {}));

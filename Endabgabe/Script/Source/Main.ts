@@ -9,48 +9,42 @@ namespace Script {
   let ySpeed: number = 0;
   let isGrounded: boolean = true;
   const gravity: number = -9.81;
-  let collectables : ƒ.Node;
+  let collectables: ƒ.Node;
   let divGroceries: HTMLElement;
-  let imgApple: HTMLElement;
-  let imgBanana: HTMLElement;
-  let imgMilk: HTMLElement;
-  let sideShelves: ƒ.Node[];
   let cashRegister: ƒ.Node;
-  let payEvent: CustomEvent = new CustomEvent("pay", {bubbles: true});
+  let payEvent: CustomEvent = new CustomEvent("pay", { bubbles: true });
   let groceries: string[] = ["apple", "banana", "milk"];
   let groceryList: string[] = [];
-  
+  let img: HTMLElement[] = [];
+
 
   document.addEventListener("interactiveViewportStarted", <EventListener>start);
 
   function start(_event: CustomEvent): void {
     viewport = _event.detail;
 
-    
-    graph= <ƒ.Graph>viewport.getBranch();
+
+    graph = <ƒ.Graph>viewport.getBranch();
 
     cmpCamera = graph.getComponent(ƒ.ComponentCamera);
     viewport.camera = cmpCamera;
     player = viewport.getBranch().getChildrenByName("character")[0];
     collectables = viewport.getBranch().getChildrenByName("collectables")[0];
     divGroceries = document.getElementById("shoppinglist");
-    imgApple = document.getElementById("apple");
-    imgBanana = document.getElementById("banana");
-    imgMilk = document.getElementById("milk");
     cashRegister = viewport.getBranch().getChildrenByName("cashRegister")[0].getChildrenByName("register")[0];
-  
-    
-    
+
+
+
     createGroceryList();
     createCollectables();
-    
-    
-    
-    
+
+
+
+
     ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
     ƒ.Loop.start();  // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
-    
-   
+
+
     /* console.log(collectables); */
     /* console.log(apple.textureApple, apple.textureBanana, apple.textureMilk); */
     cashRegister.addEventListener("pay", handlePay);
@@ -62,42 +56,42 @@ namespace Script {
     viewport.draw();
     ƒ.AudioManager.default.update();
 
-   
+
     movement();
     followCamera();
     collectGroceries();
     CollisionCashRegister();
-    
 
-   
-    
+
+
+
   }
 
-  function movement():void {
-    let timeFrame: number = ƒ.Loop.timeFrameGame/ 1000;
+  function movement(): void {
+    let timeFrame: number = ƒ.Loop.timeFrameGame / 1000;
     // ƒ.Physics.simulate();  // if physics is included and used
 
     //--checking for keyboard input--
-    if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D]) && player.mtxLocal.translation.x < 18.4){
+    if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D]) && player.mtxLocal.translation.x < 18.4) {
       player.mtxLocal.translateX(2 * timeFrame);
-      changeAnimation("ASCharacterRunRight", "MCharacterRunRight");     
-    } 
+      changeAnimation("ASCharacterRunRight", "MCharacterRunRight");
+    }
     else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D])) {
       changeAnimation("ASCharacterRunRight", "MCharacterRunRight");
     }
-    else if(ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_LEFT, ƒ.KEYBOARD_CODE.A])  && player.mtxLocal.translation.x > - 4.3){
+    else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_LEFT, ƒ.KEYBOARD_CODE.A]) && player.mtxLocal.translation.x > - 4.3) {
       player.mtxLocal.translateX(-2 * timeFrame);
       changeAnimation("ASCharacterRunLeft", "MCharacterRunLeft");
     }
-    else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_LEFT, ƒ.KEYBOARD_CODE.A])){
-      changeAnimation("ASCharacterRunLeft", "MCharacterRunLeft"); 
-    
-        
-    } else{
+    else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_LEFT, ƒ.KEYBOARD_CODE.A])) {
+      changeAnimation("ASCharacterRunLeft", "MCharacterRunLeft");
+
+
+    } else {
       changeAnimation("ASCharacterIdle", "MCharacterIdle");
     }
 
-    if(isGrounded == true && ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SPACE])){
+    if (isGrounded == true && ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.SPACE])) {
       ySpeed = 5;
       isGrounded = false;
     }
@@ -136,12 +130,12 @@ namespace Script {
       ySpeed = 0;
       pos.y = bottomBigShelfCollided.mtxWorld.translation.y + 0.98;
       isGrounded = true;
-     
+
     }
     player.mtxLocal.translation = pos;
 
-    
-    
+
+
 
   }
 
@@ -154,17 +148,17 @@ namespace Script {
     // console.log(womanSprite);
     playerCompAnimator.animation = playerSprite;
     playerCompMaterial.material = playerTexture;
-    
-   
+
+
   }
 
   function CollisionFloor(_posWorld: ƒ.Vector3): ƒ.Node {
     let tile: ƒ.Node = viewport.getBranch().getChildrenByName("floor")[0];
     //console.log(tiles);
-    
-      let pos: ƒ.Vector3 = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
-      if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5){
-        return tile;
+
+    let pos: ƒ.Vector3 = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
+    if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5) {
+      return tile;
     }
   }
 
@@ -175,7 +169,8 @@ namespace Script {
       let pos: ƒ.Vector3 = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
       if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5)
         return tile;
-  }}
+    }
+  }
 
   function CollisionUpperShelf(_posWorld: ƒ.Vector3): ƒ.Node {
     let tiles: ƒ.Node[] = viewport.getBranch().getChildrenByName("shelves")[0].getChildrenByName("upperShelves")[0].getChildrenByName("shelf");
@@ -184,7 +179,8 @@ namespace Script {
       let pos: ƒ.Vector3 = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
       if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5)
         return tile;
-  }}
+    }
+  }
 
   function CollisionBottomBigShelf(_posWorld: ƒ.Vector3): ƒ.Node {
     let tiles: ƒ.Node[] = viewport.getBranch().getChildrenByName("shelves")[0].getChildrenByName("bottomBigShelves")[0].getChildrenByName("shelf");
@@ -193,78 +189,104 @@ namespace Script {
       let pos: ƒ.Vector3 = ƒ.Vector3.TRANSFORMATION(_posWorld, tile.mtxWorldInverse, true);
       if (pos.y < 0.5 && pos.x > -0.5 && pos.x < 0.5)
         return tile;
-  }}
-  function CollisionCashRegister(): void{
+    }
+  }
+  function CollisionCashRegister(): void {
     let playerPosX: number = player.mtxLocal.translation.x;
     let playerPosY: number = player.mtxLocal.translation.y;
     let registerPosX: number = cashRegister.mtxLocal.translation.x;
     let registerPosY: number = cashRegister.mtxLocal.translation.y;
     if (playerPosX > registerPosX - 1 && playerPosX < registerPosX + 1 && playerPosY < registerPosY + 0.5) {
       cashRegister.dispatchEvent(payEvent);
-    }   
+    }
   }
 
 
-    function followCamera(): void{
-      let mutator: ƒ.Mutator = player.mtxLocal.getMutator();
-      if (player.mtxLocal.translation.x < 16 && player.mtxLocal.translation.x > - 2) {
+  function followCamera(): void {
+    let mutator: ƒ.Mutator = player.mtxLocal.getMutator();
+
+    viewport.camera.mtxPivot.mutate(
+      { "translation.y": { "y": mutator.translation.y + 1 } }
+    );
+    if (player.mtxLocal.translation.x < 16 && player.mtxLocal.translation.x > - 2) {
       viewport.camera.mtxPivot.mutate(
         { "translation": { "x": mutator.translation.x, "y": mutator.translation.y + 1 } }
       );
-      }
     }
 
-    function createCollectables(): void {
-      let apple : Collectable = new Collectable(groceryList[0], -1.5, 0.8);
-      collectables.addChild(apple);
 
-      let banana: Collectable = new Collectable(groceryList[1], 7, 2.6);
-      collectables.addChild(banana);
-    
-      let milk: Collectable = new Collectable(groceryList[2], 14, 1.9);
-      collectables.addChild(milk);
+  }
+
+  function createCollectables(): void {
+    let grocery1: Collectable = new Collectable(groceryList[0], -1.5, 0.8);
+    collectables.addChild(grocery1);
+
+
+    let grocery2: Collectable = new Collectable(groceryList[1], 7, 2.6);
+    collectables.addChild(grocery2);
+
+    let grocery3: Collectable = new Collectable(groceryList[2], 14, 1.9);
+    collectables.addChild(grocery3);
+
+    //--create shopping list in div--
+    for (let i: number = 0; i < groceryList.length; i++) {
+      let createImg = document.createElement("img");
+      createImg.src = "http://127.0.0.1:5500/Endabgabe/collectables/" + groceryList[i] + ".png";
+      createImg.id = groceryList[i];
+      divGroceries.appendChild(createImg);
+      img.push(createImg);
     }
+  }
 
-    function collectGroceries(): void {
-      let groceries: ƒ.Node[] = collectables.getChildren();
-      let playerPos: ƒ.Vector3 = player.mtxLocal.translation;
-      let groceryPos: ƒ.Vector3;
-      let name: string;
-      let img: HTMLElement;
-      for (let grocery of groceries) {
-        groceryPos = grocery.mtxLocal.translation;
-        name = grocery.name;
-        if (name == "apple") {
-          img = imgApple;
-        }
-        else if (name == "banana") {
-          img = imgBanana;
-        }
-        else if (name == "milk") {
-          img = imgMilk;
-        }
-        
-        if (playerPos.x > groceryPos.x - 0.5 && playerPos.x < groceryPos.x + 0.5 && playerPos.y < groceryPos.y + 0.5 && playerPos.y > groceryPos.y - 0.5) {
+  function collectGroceries(): void {
+    let groceries: ƒ.Node[] = collectables.getChildren();
+    let playerPos: ƒ.Vector3 = player.mtxLocal.translation;
+    let groceryPos: ƒ.Vector3;
+    let name: string;
+
+    for (let grocery of groceries) {
+      groceryPos = grocery.mtxLocal.translation;
+      name = grocery.name;
+
+
+      if (playerPos.x > groceryPos.x - 0.3 && playerPos.x < groceryPos.x + 0.3 && playerPos.y < groceryPos.y + 0.3 && playerPos.y > groceryPos.y - 0.5) {
         collectables.removeChild(grocery);
-        console.log(name);
+        let img: HTMLElement = document.getElementById(name);
         divGroceries.removeChild(img);
-        }
-
+        checkGrocery(name);
       }
 
-      
-    }
-    function handlePay(_event: CustomEvent): void {
-      console.log("payed");
     }
 
-    function createGroceryList(): void {
-      for (let i:number = 0; i<3; i++) {
-        let n: number = Math.floor(Math.random() * 3); 
-       
-        groceryList.push(groceries[n]);
-        console.log(groceryList);
-      }
+
+  }
+  function handlePay(_event: CustomEvent): void {
+    if (groceryList.length == 0) {
+      console.log("wuhuuuu");
     }
-  
+    else {
+      console.log("notyet");
+    }
+  }
+
+  function createGroceryList(): void {
+    for (let i: number = 0; i < 3; i++) {
+      let n: number = Math.floor(Math.random() * 3);
+
+      groceryList.push(groceries[n]);
+      console.log(groceryList);
+    }
+  }
+
+  function checkGrocery(_grocery: string): void {
+    let grocery: string = _grocery;
+
+    for (let i: number = 0; i < groceryList.length; i++) {
+      if (grocery = groceryList[i])
+        groceryList.splice(i, 1);
+      console.log(groceryList);
+      break;
+    }
+  }
+
 }
