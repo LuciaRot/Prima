@@ -9,7 +9,7 @@
 * Docent: Prof. Jirka Dell´Oro-Friedl
 
 ## Interaction 
-This game is a little jump and run where you have to collect the groceries on your list. The controls are "w" and "d" to move and "space" to jump. As soon as you have collected all the groceries, bring them to the cash register at the end. Be careful not to touch the litle ghost and loose all your lives. You'll also loose a life if you go to the cash register too soon.
+This game is a little jump and run where you have to collect the groceries on your list. The controls are "w" and "d" to move and "space" to jump. As soon as you have collected all the groceries, bring them to the cash register at the end. Be careful not to touch the little ghost and loose all your lives. You'll also loose a life if you go to the cash register too soon.
 
 
 ## Links
