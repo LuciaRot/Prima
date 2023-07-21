@@ -95,6 +95,10 @@ var Script;
     let img = [];
     let sound;
     let win = true;
+    let hearts;
+    let ghost;
+    let animCom;
+    let heartsDiv;
     document.addEventListener("interactiveViewportStarted", start);
     function start(_event) {
         viewport = _event.detail;
@@ -107,15 +111,22 @@ var Script;
         collectables = viewport.getBranch().getChildrenByName("collectables")[0];
         divGroceries = document.getElementById("shoppinglist");
         cashRegister = viewport.getBranch().getChildrenByName("cashRegister")[0].getChildrenByName("register")[0];
+        ghost = viewport.getBranch().getChildrenByName("enemies")[0].getChildrenByName("enemy")[0];
+        animCom = ghost.getComponent(ƒ.ComponentAnimator);
+        heartsDiv = document.getElementById("hearts");
+        heartsDiv.style.left = viewport.canvas.width - 300 + "px";
+        fetchJson();
         createGroceryList();
         createCollectables();
         addAudio();
+        /* animateGhost();
+     */
         ƒ.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         ƒ.Loop.start(); // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
         cashRegister.addEventListener("pay", handlePay);
     }
     function update(_event) {
-        // ƒ.Physics.simulate();  // if physics is included and used
+        //ƒ.Physics.simulate();  // if physics is included and used
         viewport.draw();
         ƒ.AudioManager.default.update();
         movement();
@@ -257,6 +268,13 @@ var Script;
             img.push(createImg);
         }
     }
+    function createHearts() {
+        for (let i = 0; i < hearts; i++) {
+            let createImg = document.createElement("img");
+            createImg.src = "graphics/heart.png";
+            heartsDiv.appendChild(createImg);
+        }
+    }
     function collectGroceries() {
         let groceries = collectables.getChildren();
         let playerPos = player.mtxLocal.translation;
@@ -320,5 +338,41 @@ var Script;
         //audio.setAudio(sound);
         audio.play(true);
     }
+    async function fetchJson() {
+        let table = await fetch("hearts.json");
+        let textTable = await table.text();
+        let data = JSON.parse(textTable);
+        hearts = Number(data["hearts"]);
+        console.log(hearts);
+        createHearts();
+    }
+    /* function animateGhost(): void {
+  
+      let animseq: ƒ.AnimationSequence = new ƒ.AnimationSequence();
+      animseq.addKey(new ƒ.AnimationKey(0, 0));
+      animseq.addKey(new ƒ.AnimationKey(750, 1));
+      animseq.addKey(new ƒ.AnimationKey(1000, 0));
+  
+      let animStructure: ƒ.AnimationStructure = {
+        components: {
+          ComponentTransform: [
+            {
+              "ƒ.ComponentTransform": {
+                mtxLocal: {
+                  translation: {
+                    y: animseq
+                  }
+                }
+              }
+            }
+          ]
+        }
+      };
+  
+      let animation: ƒ.Animation = new ƒ.Animation("testAnimation", animStructure);
+      let cmpAnimator: ƒ.ComponentAnimator = new ƒ.ComponentAnimator(animation);
+      ghost.addComponent(cmpAnimator);
+  
+    } */
 })(Script || (Script = {}));
 //# sourceMappingURL=Script.js.map

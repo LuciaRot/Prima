@@ -305,9 +305,61 @@
       "type": "Audio"
     }
   },
+  "Audio|2023-07-21T13:40:16.783Z|30889": {
+    "ƒ.Audio": {
+      "url": "audio\\mixkit-arcade-retro-run-sound-220.wav",
+      "idResource": "Audio|2023-07-21T13:40:16.783Z|30889",
+      "name": "win",
+      "type": "Audio"
+    }
+  },
+  "Material|2023-07-21T16:14:16.673Z|38758": {
+    "ƒ.Material": {
+      "name": "MEnemy",
+      "idResource": "Material|2023-07-21T16:14:16.673Z|38758",
+      "shader": "ShaderLitTextured",
+      "coat": {
+        "ƒ.CoatTextured": {
+          "color": "[1, 1, 1, 1]",
+          "idTexture": "TextureImage|2023-07-21T16:45:14.654Z|16647"
+        }
+      }
+    }
+  },
+  "TextureImage|2023-07-21T16:13:59.114Z|27173": {
+    "ƒ.TextureImage": {
+      "url": "enemies\\Walk.png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-21T16:13:59.114Z|27173",
+        "name": "TIEnemy",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "AnimationSprite|2023-07-21T16:17:02.204Z|55014": {
+    "ƒ.AnimationSprite": {
+      "idResource": "AnimationSprite|2023-07-21T16:17:02.204Z|55014",
+      "idTexture": "TextureImage|2023-07-21T16:13:59.114Z|27173",
+      "frames": 6,
+      "wrapAfter": 6,
+      "start": "[-55.29999923706055, 40]",
+      "size": "[42, 57]",
+      "next": "[96, 0]",
+      "wrap": "[0, 80]",
+      "Animation": {
+        "idResource": "AnimationSprite|2023-07-21T16:17:02.204Z|55014",
+        "name": "ASEnemy",
+        "labels": {},
+        "events": {},
+        "framesPerSecond": 5,
+        "animationStructure": {}
+      }
+    }
+  },
   "Graph|2023-07-14T12:59:02.401Z|80427": {
     "ƒ.Graph": {
-      "name": "NewGraph",
+      "name": "Game",
       "active": true,
       "components": {
         "ComponentMesh": [
@@ -436,9 +488,7 @@
                     "animateInEditor": false
                   }
                 }
-              ],
-              "ComponentAudioListener": [],
-              "ComponentAudio": []
+              ]
             },
             "children": []
           }
@@ -918,7 +968,7 @@
                                 "local": {
                                   "translation": "[-3.3000001907348633, 1.4999995231628418, 1]",
                                   "rotation": "[0, 0, 0]",
-                                  "scaling": "[3, 0.3999999761581421, 1]"
+                                  "scaling": "[2, 0.3999999761581421, 1]"
                                 },
                                 "Component": {
                                   "active": true
@@ -1559,6 +1609,86 @@
               }
             ]
           }
+        },
+        {
+          "ƒ.Node": {
+            "name": "enemies",
+            "active": true,
+            "components": {},
+            "children": [
+              {
+                "ƒ.Node": {
+                  "name": "enemy",
+                  "active": true,
+                  "components": {
+                    "ComponentMesh": [
+                      {
+                        "ƒ.ComponentMesh": {
+                          "idMesh": "MeshQuad|2023-07-14T13:50:52.432Z|42393",
+                          "pivot": {
+                            "translation": "[0, 0, 0]",
+                            "rotation": "[0, 0, 0]",
+                            "scaling": "[1, 1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentTransform": [
+                      {
+                        "ƒ.ComponentTransform": {
+                          "local": {
+                            "translation": "[0, -1.2000000476837158, 1.0010000467300415]",
+                            "rotation": "[0, 0, 0]",
+                            "scaling": "[0.4999999701976776, 0.49999991059303284, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          }
+                        }
+                      }
+                    ],
+                    "ComponentMaterial": [
+                      {
+                        "ƒ.ComponentMaterial": {
+                          "sortForAlpha": false,
+                          "clrPrimary": "[1, 1, 1, 1]",
+                          "clrSecondary": "[1, 1, 1, 1]",
+                          "pivot": {
+                            "translation": "[0, 0]",
+                            "rotation": 0,
+                            "scaling": "[1, 1]"
+                          },
+                          "Component": {
+                            "active": true
+                          },
+                          "idMaterial": "Material|2023-07-21T16:14:16.673Z|38758"
+                        }
+                      }
+                    ],
+                    "ComponentAnimator": [
+                      {
+                        "ƒ.ComponentAnimator": {
+                          "Component": {
+                            "active": true
+                          },
+                          "idAnimation": "Animation|2023-07-21T16:56:39.243Z|67768",
+                          "playmode": "loop",
+                          "quantization": "discrete",
+                          "scale": 1,
+                          "scaleWithGameTime": true,
+                          "animateInEditor": true
+                        }
+                      }
+                    ]
+                  },
+                  "children": []
+                }
+              }
+            ]
+          }
         }
       ],
       "idResource": "Graph|2023-07-14T12:59:02.401Z|80427",
@@ -1721,12 +1851,25 @@
       "type": "Audio"
     }
   },
-  "Audio|2023-07-21T13:40:16.783Z|30889": {
-    "ƒ.Audio": {
-      "url": "audio\\mixkit-arcade-retro-run-sound-220.wav",
-      "idResource": "Audio|2023-07-21T13:40:16.783Z|30889",
-      "name": "win",
-      "type": "Audio"
+  "TextureImage|2023-07-21T16:45:14.654Z|16647": {
+    "ƒ.TextureImage": {
+      "url": "enemies\\Ghosty_Blush-Sheet (2).png",
+      "type": "TextureImage",
+      "Texture": {
+        "idResource": "TextureImage|2023-07-21T16:45:14.654Z|16647",
+        "name": "enemies\\Ghosty_Blush-Sheet (2).png",
+        "mipmap": "CRISP"
+      }
+    }
+  },
+  "Animation|2023-07-21T16:56:39.243Z|67768": {
+    "ƒ.Animation": {
+      "idResource": "Animation|2023-07-21T16:56:39.243Z|67768",
+      "name": "Animation",
+      "labels": {},
+      "events": {},
+      "framesPerSecond": 60,
+      "animationStructure": {}
     }
   }
 }

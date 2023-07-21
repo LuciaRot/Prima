@@ -18,6 +18,11 @@ namespace Script {
   let img: HTMLElement[] = [];
   let sound: ƒ.Audio;
   let win: boolean = true;
+  let hearts: number;
+  let ghost: ƒ.Node;
+  let animCom: ƒ.Component;
+  let heartsDiv: HTMLElement;
+
 
 
   document.addEventListener("interactiveViewportStarted", <EventListener>start);
@@ -37,27 +42,36 @@ namespace Script {
     collectables = viewport.getBranch().getChildrenByName("collectables")[0];
     divGroceries = document.getElementById("shoppinglist");
     cashRegister = viewport.getBranch().getChildrenByName("cashRegister")[0].getChildrenByName("register")[0];
+    ghost = viewport.getBranch().getChildrenByName("enemies")[0].getChildrenByName("enemy")[0];
+    animCom = ghost.getComponent(ƒ.ComponentAnimator);
+    heartsDiv = document.getElementById("hearts");
+    heartsDiv.style.left = viewport.canvas.width - 300 + "px";
 
 
 
+    fetchJson();
     createGroceryList();
     createCollectables();
     addAudio();
+    
+    /* animateGhost();
+ */
 
 
-   
+
+
 
     ƒ.Loop.addEventListener(ƒ.EVENT.LOOP_FRAME, update);
     ƒ.Loop.start();  // start the game loop to continously draw the viewport, update the audiosystem and drive the physics i/a
 
 
-  
+
     cashRegister.addEventListener("pay", handlePay);
 
   }
 
   function update(_event: Event): void {
-    // ƒ.Physics.simulate();  // if physics is included and used
+    //ƒ.Physics.simulate();  // if physics is included and used
     viewport.draw();
     ƒ.AudioManager.default.update();
 
@@ -80,7 +94,7 @@ namespace Script {
     if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D]) && player.mtxLocal.translation.x < 18.4) {
       player.mtxLocal.translateX(2 * timeFrame);
       changeAnimation("ASCharacterRunRight", "MCharacterRunRight");
-      
+
     }
     else if (ƒ.Keyboard.isPressedOne([ƒ.KEYBOARD_CODE.ARROW_RIGHT, ƒ.KEYBOARD_CODE.D])) {
       changeAnimation("ASCharacterRunRight", "MCharacterRunRight");
@@ -241,6 +255,14 @@ namespace Script {
     }
   }
 
+  function createHearts(): void {
+    for (let i: number = 0; i < hearts; i++) {
+      let createImg = document.createElement("img");
+      createImg.src = "graphics/heart.png";
+      heartsDiv.appendChild(createImg);
+    }
+  }
+
   function collectGroceries(): void {
     let groceries: ƒ.Node[] = collectables.getChildren();
     let playerPos: ƒ.Vector3 = player.mtxLocal.translation;
@@ -299,23 +321,61 @@ namespace Script {
     let audioListener: ƒ.ComponentAudioListener = viewport.getBranch().getComponent(ƒ.ComponentAudioListener);
     ƒ.AudioManager.default.listenWith(audioListener);
     ƒ.AudioManager.default.listenTo(viewport.getBranch());
-  
-  }
- function addSound(_sound: string): void {
-  let audio: ƒ.ComponentAudio = collectables.getComponent(ƒ.ComponentAudio);
-  sound = ƒ.Project.getResourcesByName(_sound)[0] as ƒ.Audio;
-  console.log(sound);
-  audio.setAudio(sound);
-  audio.play(true);
- }
 
- function addSoundRegister(_sound: string): void {
-  let audio: ƒ.ComponentAudio = viewport.getBranch().getChildrenByName("cashRegister")[0].getComponent(ƒ.ComponentAudio);
-  sound = ƒ.Project.getResourcesByName(_sound)[0] as ƒ.Audio;
-  console.log(sound);
-  console.log(audio);
-  //audio.setAudio(sound);
-  audio.play(true);
- }
+  }
+  function addSound(_sound: string): void {
+    let audio: ƒ.ComponentAudio = collectables.getComponent(ƒ.ComponentAudio);
+    sound = ƒ.Project.getResourcesByName(_sound)[0] as ƒ.Audio;
+    console.log(sound);
+    audio.setAudio(sound);
+    audio.play(true);
+  }
+
+  function addSoundRegister(_sound: string): void {
+    let audio: ƒ.ComponentAudio = viewport.getBranch().getChildrenByName("cashRegister")[0].getComponent(ƒ.ComponentAudio);
+    sound = ƒ.Project.getResourcesByName(_sound)[0] as ƒ.Audio;
+    console.log(sound);
+    console.log(audio);
+    //audio.setAudio(sound);
+    audio.play(true);
+  }
+
+  async function fetchJson(): Promise<void> {
+    let table: Response = await fetch("hearts.json");
+    let textTable: string = await table.text();
+    let data = JSON.parse(textTable);
+    hearts = Number(data["hearts"]);
+    console.log(hearts);
+    createHearts();
+  }
+
+  /* function animateGhost(): void {
+
+    let animseq: ƒ.AnimationSequence = new ƒ.AnimationSequence();
+    animseq.addKey(new ƒ.AnimationKey(0, 0));
+    animseq.addKey(new ƒ.AnimationKey(750, 1));
+    animseq.addKey(new ƒ.AnimationKey(1000, 0));
+
+    let animStructure: ƒ.AnimationStructure = {
+      components: {
+        ComponentTransform: [
+          {
+            "ƒ.ComponentTransform": {
+              mtxLocal: {
+                translation: {
+                  y: animseq
+                }
+              }
+            }
+          }
+        ]
+      }
+    };
+
+    let animation: ƒ.Animation = new ƒ.Animation("testAnimation", animStructure);
+    let cmpAnimator: ƒ.ComponentAnimator = new ƒ.ComponentAnimator(animation);
+    ghost.addComponent(cmpAnimator);
+
+  } */
 
 }

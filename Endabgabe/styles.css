@@ -25,6 +25,15 @@ canvas.fullscreen {
 
 }
 
+#hearts {
+  width: 400px;
+  height: 15vh;
+  z-index: 1000;
+  top: 0;
+  position: absolute;
+  right: 0;
+}
+
 h1 {
   color: black;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
